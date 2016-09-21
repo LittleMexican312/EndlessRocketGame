@@ -4,6 +4,19 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
+//Get DeltaTime
+function getDeltaTime() {
+	endFrameMillis = startFrameMillis;
+	startFrameMillis = Date.now();
+
+	var deltaTime = (startFrameMillis - endFrameMillis) * 0.001;
+
+	if (deltaTime > 1)
+		deltaTime = 1;
+
+	return deltaTime;
+}
+
 //Screen Variables
 var SCREEN_HEIGHT = canvas.height;
 var SCREEN_WIDTH = canvas.width;
@@ -40,19 +53,6 @@ function rand(floor, ceil) {
 //Asteroid Variables
 var ASTEROID_SPEED = rand(3, 6);
 var spawnTimer = 0;
-
-//Get DeltaTime
-function getDeltaTime() {
-	endFrameMillis = startFrameMillis;
-	startFrameMillis = Date.now();
-
-	var deltaTime = (startFrameMillis - endFrameMillis) * 0.001;
-
-	if (deltaTime > 1)
-		deltaTime = 1;
-
-	return deltaTime;
-}
 
 // Run Statement
 function run () {	
