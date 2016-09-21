@@ -1,5 +1,12 @@
+//------ ROCKET GAME ------//
+//Good Memes
+//Setting of Canvas
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
+
+//Screen Variables
+var SCREEN_HEIGHT = canvas.height;
+var SCREEN_WIDTH = canvas.width;
 
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
@@ -37,9 +44,9 @@ var fpsTime = 0;
 
 var DEBUG = 1;		// set to 0 to turn off drawing debug information
 
-var SCREEN_WIDTH = canvas.width;
-var SCREEN_HEIGHT = canvas.height;
-
+//Game Variables
+var menuimage = new menuimage();
+var background = new background();
 var keyboard = new Keyboard();
 
 var stateManager = new StateManager();

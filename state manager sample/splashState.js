@@ -1,5 +1,3 @@
-var menuimage = new menuimage();
-
 var SplashState = function() 
 {
 	this.prototype = BaseState;
