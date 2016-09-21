@@ -2,6 +2,7 @@
 var GameState = function() 
 {
 	this.prototype = BaseState;
+	this.image =  background.png;
 }
 
 GameState.prototype.load = function() 

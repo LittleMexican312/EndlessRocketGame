@@ -4,6 +4,10 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
+//Screen Variables
+var SCREEN_HEIGHT = canvas.height;
+var SCREEN_WIDTH = canvas.width;
+
 // Delta Time
 var startFrameMillis = Date.now();
 var endFrameMillis = Date.now();
@@ -21,9 +25,8 @@ function getDeltaTime() {
 	return deltaTime;
 }
 
-//Screen Variables
-var SCREEN_HEIGHT = canvas.height;
-var SCREEN_WIDTH = canvas.width;
+// ---- DO NOT EDIT ANYTHING ABOVE THIS FRIENDS ---- //
+
 
 //Game State Variables
 var STATE_MENUSCREEN = 0;
