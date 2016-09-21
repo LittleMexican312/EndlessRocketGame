@@ -95,39 +95,36 @@ var objects = [];
 // save the starting time (used to calc elapsed time)
 var startTime = Date.now();
 
-function spawnRandomObject() {
+function getRandomImage () {
+var randomImageArray = new Array();
+    randomImageArray[1] = 1;
+    randomImageArray[2] = 2;
+    randomImageArray[3] = 3;
+var randomArrayNumber = randomImageArray[Math.floor(Math.random() * randomImageArray.length)];
+console.log(randomArrayNumber);
+}
+getRandomImage();
 
-    // select a random type for this new object
-    var t;
+var object = function spawnRandomObject() {
+    this.image = document.createElement("img");
+    this.x = 0;
+    this.y = 0;
 
-    // About Math.random()
-    // Math.random() generates a semi-random number
-    // between 0-1. So to randomly decide if the next object
-    // will be A or B, we say if the random# is 0-.49 we
-    // create A and if the random# is .50-1.00 we create B
-
-    if (Math.random() < 0.50) {
-        t = "red";
-    } else {
-        t = "blue";
+    if (randomImageArray = 1) {
+        this.image.src = "asteroid1.png";
+        getRandomImage();
+    }
+    if (randomArrayNumber = 2) {
+        this.image.src = "asteroid2.png";
+        getRandomImage();
+    }
+    if (randomImageArray = 3) {
+        this.image.src = "asteroid3.png";
+        getRandomImage();
     }
 
-    // create the new object
-    var object = {
-        // set this objects type
-        type: t,
-        // set x randomly but at least 15px off the canvas edges
-        x: Math.random() * (canvas.width - 30) + 15,
-        // set y to start on the line where objects are spawned
-        y: spawnLineY,
-    }
-
-    // add the new object to the objects[] array
     objects.push(object);
 }
-
-
-
 function animate() {
 
     // get the elapsed time
