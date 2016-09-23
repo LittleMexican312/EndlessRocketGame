@@ -64,6 +64,7 @@ function run () {
 
     var deltaTime = getDeltaTime();
 
+    
     //Game States
     switch (gameState) {
         case STATE_MENUSCREEN:
@@ -139,11 +140,6 @@ function animate() {
         spawnRandomObject();
     }
 
-    // draw the line where new objects are spawned
-    context.beginPath();
-    context.moveTo(0, spawnLineY);
-    context.lineTo(canvas.width, spawnLineY);
-    context.stroke();
 
     // move each object down the canvas
     for (var i = 0; i < objects.length; i++) {

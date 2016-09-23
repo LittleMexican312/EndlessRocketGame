@@ -46,13 +46,13 @@ var DEBUG = 1;		// set to 0 to turn off drawing debug information
 
 //Game Variables
 var menuimage = new menuimage();
+var player = new Player();
 var background = new background();
 var keyboard = new Keyboard();
 
 var stateManager = new StateManager();
 
 stateManager.pushState( new SplashState() );
-
 
 function run()
 {
@@ -83,7 +83,6 @@ function run()
 		context.fillText("FPS: " + fps, 5, 20, 100);
 	}
 }
-
 
 //-------------------- Don't modify anything below here
 
