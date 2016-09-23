@@ -81,6 +81,7 @@ function run () {
             break;
     }
 }
+
 // newly spawned objects start at Y=25
 var spawnLineY = -10;
 
