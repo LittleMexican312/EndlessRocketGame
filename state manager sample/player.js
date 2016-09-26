@@ -99,8 +99,7 @@ Player.prototype.update = function(deltaTime)
 		// calculate the new position and velocity:
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
-		
-	
+    
 }
 	
 Player.prototype.draw = function()

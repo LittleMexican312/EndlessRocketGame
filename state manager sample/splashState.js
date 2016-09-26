@@ -20,6 +20,6 @@ SplashState.prototype.update = function(dt)
 }
 
 SplashState.prototype.draw = function() 
-{
+{    
 	menuimage.draw();
 }
