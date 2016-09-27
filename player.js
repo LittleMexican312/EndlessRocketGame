@@ -81,7 +81,7 @@ Player.prototype.update = function(deltaTime)
 	}
 	
 	
-// Position Boundaries
+// Position Boundaries    
 	if (this.position.x <= 0) {
 		this.position.x = 0;
 	}
