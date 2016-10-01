@@ -38,6 +38,7 @@ var gameState = STATE_MENUSCREEN;
 
 //Timers
 var menuTimer = 3;
+var gameTimer = 0;
 
 //Game Variables
 var menuimage = new menuimage();
@@ -170,16 +171,54 @@ function runMainMenu(deltaTime) {
 
 
 }
-function runGame(deltaTime) {
-
-
-	
+function runGame(deltaTime) {	
 	background.draw();
     player.update(deltaTime);
     player.draw();
     animate();
+	
+	gameTimer += deltaTime;
+	
+	// game timer
+	context.fillStyle = "red";
+	context.font = "16px Arial";
+	var gameTimerText = "Time Left:" + gameTimer.toFixed(0);
+	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+	
 }
 function runGameOver(deltaTime) {
+	
+	// we will make this look better if we have more time at the end just added this so we had something there
+	// and when you press R to restart the balls (soon to be changed to asteroids) dont reset need to fix that
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("Game Over!", 165, 240);
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("You Survived For ", 165, 270);
+	
+	context.fillStyle = "#000";
+    context.font = "24px Arial";
+    context.fillText(gameTimer.toFixed(0) + " Seconds", 165, 300);
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("Good Job!", 165, 330);
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("Press R To Restart", 150, 360);
+	
+	if (keyboard.isKeyDown(keyboard.KEY_R) == true)
+	{
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		gameState = STATE_GAME;
+		gameTimer = 0;
+		player.position.set(200, 200);
+	}
+	
 }
 function runUpgradeMenu(deltaTime) {
 }
