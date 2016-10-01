@@ -5,12 +5,13 @@ var asteroids = [];
 
 var asteroid = {
 		image: document.createElement("img"),
-		x: asteroid.x,
-		y: asteroid.y,
 		width: 64,
 		height: 64,
 		velocityX: 0,
 		velocityY: 0
+}
+
+asteroid.image.src = "asteroid.png";
 
 // newly spawned objects start at Y=25
 var spawnLineY = -10;
@@ -47,7 +48,7 @@ function spawnRandomObject() {
     // create A and if the random# is .50-1.00 we create B
 
     if (Math.random() < 0.50) {
-        t = "red";
+        t = "asteroid.png";
     } else {
         t = "blue";
     }
