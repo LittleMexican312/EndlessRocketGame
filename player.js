@@ -82,18 +82,9 @@ Player.prototype.update = function(deltaTime)
 	
 	
 // Position Boundaries    
-	if (this.position.x <= 0) {
-		this.position.x = 0;
-	}
-	if (this.position.x >= SCREEN_WIDTH) {
-		this.position.x = SCREEN_WIDTH;
-	}
-	if (this.position.y <= 0) {
-		this.position.y = 0;
-	}
-	if (this.position.y >= SCREEN_HEIGHT) {
-		this.position.y = SCREEN_HEIGHT;
-	}
+	if (this.positionY < canvas.height) {
+        this.positionY = 0;
+    }
 	
 	
 		// calculate the new position and velocity:
