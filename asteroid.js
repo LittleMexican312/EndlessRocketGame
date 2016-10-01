@@ -1,6 +1,17 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
+var asteroids = [];
+
+var asteroid = {
+		image: document.createElement("img"),
+		x: asteroid.x,
+		y: asteroid.y,
+		width: 64,
+		height: 64,
+		velocityX: 0,
+		velocityY: 0
+
 // newly spawned objects start at Y=25
 var spawnLineY = -10;
 
