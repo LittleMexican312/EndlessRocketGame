@@ -1,8 +1,8 @@
 
-var image="asteroid.png";  //Image path should be given here
-var no = 15; // No of images should fall
+var image="asteroid.png";
+var no = 15; // number of asteroids falling at once
 var time = 0; // Configure whether image should disappear after x seconds (0=never):
-var speed = 70; // Fix how fast the image should fall
+var speed = 70; // falling speed
 var i, dwidth = 480, dheight =640; 
 var nht = dheight;
 var toppos = 0;
