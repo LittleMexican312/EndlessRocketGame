@@ -171,6 +171,9 @@ function runMainMenu(deltaTime) {
 
 }
 function runGame(deltaTime) {
+
+
+	
 	background.draw();
     player.update(deltaTime);
     player.draw();

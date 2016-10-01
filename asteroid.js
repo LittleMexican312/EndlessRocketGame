@@ -1,6 +1,18 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
+var asteroids = [];
+
+var asteroid = {
+		image: document.createElement("img"),
+		width: 64,
+		height: 64,
+		velocityX: 0,
+		velocityY: 0
+}
+
+asteroid.image.src = "asteroid.png";
+
 // newly spawned objects start at Y=25
 var spawnLineY = -10;
 
@@ -14,17 +26,7 @@ var spawnRateOfDescent = 0.05;
 var lastSpawn = -1;
 
 // this array holds all spawned object
-var asteroids = [];
-
-var asteroid = {
-		image: document.createElement("img"),
-		width: 64,
-		height: 64,
-		velocityX: 0,
-		velocityY: 0
-}
-
-asteroid.image.src = "asteroid.png";
+var objects = [];
 
 // save the starting time (used to calc elapsed time)
 var startTime = Date.now();
@@ -52,7 +54,7 @@ function spawnRandomObject() {
     }
 
     // create the new object
-    var asteroid = {
+    var object = {
         // set this objects type
         type: t,
         // set x randomly but at least 15px off the canvas edges

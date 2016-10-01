@@ -100,6 +100,32 @@ Player.prototype.update = function(deltaTime)
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		
+		
+	//Player Position Updates
+
+    if (player.position.x >= SCREEN_WIDTH + 22) {
+
+        player.position.x -= 2; 
+
+    }
+
+    if (player.position.x <= 0 + 79) {
+
+        player.position.x += 2; 
+
+    }  
+
+    if (player.position.y >= SCREEN_HEIGHT) {
+		
+		gameState = STATE_GAMEOVER;
+
+    }  
+
+    if (player.position.y <= 0 + 81) {
+
+        player.position.y += 3; 
+
+    }
 	
 }
 	
