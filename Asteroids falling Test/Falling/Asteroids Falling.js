@@ -1,4 +1,3 @@
-
 var image="asteroid.png";
 var no = 15; // number of asteroids falling at once
 var time = 0; // Configure whether image should disappear after x seconds (0=never):
@@ -110,17 +109,6 @@ function animation() {  // animation function
     	}
     	atime=setTimeout("animation()", speed);
 
-}
-
-function hideimage(){
-	if (window.atime) clearTimeout(atime)
-		for (i=0; i<no; i++) 
-			document.getElementById("dot"+i).style.visibility="hidden"
-}
-if (ie4up||ns6up){
-animation();
-if (time>0)
-	setTimeout("hideimage()", time*1000)
 }
 animation();
 
