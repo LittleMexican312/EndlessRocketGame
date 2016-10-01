@@ -1,6 +1,3 @@
-/*   Free Script provided by HIOXINDIA            */
-/*   visit us at http://www.hscripts.com     */
-/*   This is a copyright product of hioxindia.com */
 
 var image="asteroid.png";  //Image path should be given here
 var no = 15; // No of images should fall
