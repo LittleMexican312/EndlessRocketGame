@@ -180,10 +180,11 @@ function runGame(deltaTime) {
 	gameTimer += deltaTime;
 	
 	// game timer
-	context.fillStyle = "red";
+	context.fillStyle = "white";
 	context.font = "16px Arial";
 	var gameTimerText = "Time Left:" + gameTimer.toFixed(0);
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+    
 	
 }
 function runGameOver(deltaTime) {

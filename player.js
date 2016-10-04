@@ -7,9 +7,6 @@ var Player = function() {
 	this.width = 159;
 	this.height = 163;
 	
-	this.offset = new Vector2();
-	this.offset.set(-159,-163);
-	
 	this.image.src = "Rocket1.png";
 		
 	this.velocity = new Vector2();
@@ -79,31 +76,16 @@ Player.prototype.update = function(deltaTime)
 	if (down == true) {
 		this.position.y += PLAYER_SPEED * ROCKET_SPEED;
 	}
-	
-	
-// Position Boundaries    
-	if (this.position.x <= 0) {
-		this.position.x = 0;
-	}
-	if (this.position.x >= SCREEN_WIDTH) {
-		this.position.x = SCREEN_WIDTH;
-	}
-	if (this.position.y <= 0) {
-		this.position.y = 0;
-	}
-	if (this.position.y >= SCREEN_HEIGHT) {
-		this.position.y = SCREEN_HEIGHT;
-	}
-	
-	
+		
 		// calculate the new position and velocity:
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
 	this.position.x = Math.floor(this.position.x + (deltaTime * this.velocity.x));
 		
 		
 	//Player Position Updates
-
-    if (player.position.x >= SCREEN_WIDTH + 22) {
+	console.log("Player Position = " +player.position.x);
+	console.log("SCREEN_WIDTH =" +SCREEN_WIDTH);
+    if (player.position.x - 24 >= SCREEN_WIDTH) {
 
         player.position.x -= 2; 
 
