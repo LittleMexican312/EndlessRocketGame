@@ -4,13 +4,14 @@ var Player = function() {
 	this.position = new Vector2();
 	this.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	
-	this.width = 159;
-	this.height = 163;
+	this.width = 40;
+	this.height = 89;
 	
 	this.image.src = "Rocket1.png";
 		
 	this.velocity = new Vector2();
 	
+	this.rotation = 0;
 };
 
 var positionX = 200;
@@ -63,7 +64,7 @@ Player.prototype.update = function(deltaTime)
 		this.position.y += FALLING_SPEED;
 	}
 	
-//Add Player Speed3
+//Add Player Speed
 	if (left == true) {
 		this.position.x -= PLAYER_SPEED;
 	}
@@ -76,6 +77,9 @@ Player.prototype.update = function(deltaTime)
 	if (down == true) {
 		this.position.y += PLAYER_SPEED * ROCKET_SPEED;
 	}
+	if (space == true){
+		playerShoot();
+	}
 		
 		// calculate the new position and velocity:
 	this.position.y = Math.floor(this.position.y + (deltaTime * this.velocity.y));
@@ -83,27 +87,25 @@ Player.prototype.update = function(deltaTime)
 		
 		
 	//Player Position Updates
-	console.log("Player Position = " +player.position.x);
-	console.log("SCREEN_WIDTH =" +SCREEN_WIDTH);
-    if (player.position.x - 24 >= SCREEN_WIDTH) {
+    if (player.position.x >= SCREEN_WIDTH - player.width/2) {
 
         player.position.x -= 2; 
 
     }
 
-    if (player.position.x <= 0 + 79) {
+    if (player.position.x <= 0 + player.width/2) {
 
         player.position.x += 2; 
 
     }  
 
-    if (player.position.y >= SCREEN_HEIGHT) {
+    if (player.position.y >= SCREEN_HEIGHT - player.height/2) {
 		
 		gameState = STATE_GAMEOVER;
 
     }  
 
-    if (player.position.y <= 0 + 81) {
+    if (player.position.y <= 0 + player.height/2) {
 
         player.position.y += 3; 
 

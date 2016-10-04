@@ -46,6 +46,52 @@ var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
 
+//Create Bullet
+var bullet = {
+    image: document.createElement("img"),
+
+    x: player.position.x,
+    y: player.position.y,
+
+    width: 5,
+    height: 5,
+
+    velocityX: 0,
+    velocityY: 0,
+
+    isDead: true,
+};
+
+//Bullet Image
+bullet.image.src = "bullet.png";
+
+//Bullet Speed
+var BULLET_SPEED = 4;
+
+//Player Shooting Function
+function playerShoot()
+{
+    if(bullet.isDead == false )
+        return;
+
+    var velX = 0;
+    var velY = -1;
+
+    var s = Math.sin(player.rotation);
+    var c = Math.cos(player.rotation);
+
+    var xVel = (velX * c) - (velY * s);
+    var yVel = (velX * s) + (velY * c);
+
+    bullet.velocityX = xVel * BULLET_SPEED;
+    bullet.velocityY = yVel * BULLET_SPEED;
+
+    bullet.x = player.position.x;
+    bullet.y = player.position.y;
+
+	bullet.isDead = false;
+}
+
 //Create array for Asteroid
 var asteroids = [];
 
@@ -179,11 +225,23 @@ function runGame(deltaTime) {
 	
 	gameTimer += deltaTime;
 	
-	// game timer
+	// Game Timer
 	context.fillStyle = "white";
 	context.font = "16px Arial";
 	var gameTimerText = "Time Left:" + gameTimer.toFixed(0);
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+
+    // Bullet Functionality
+    if (bullet.isDead == false) {
+        bullet.x += bullet.velocityX;
+        bullet.y += bullet.velocityY;
+        context.drawImage(bullet.image,
+            bullet.x - bullet.width / 2, bullet.y - bullet.height / 2);
+    }
+    //Bullet Restrictions w/ Wall
+    if (bullet.x < 0 || bullet.x > SCREEN_WIDTH || bullet.y < 0 || bullet.y > SCREEN_HEIGHT) {
+        bullet.isDead = true;
+    }
     
 	
 }
