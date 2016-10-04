@@ -13,13 +13,17 @@ var toppos = 0;
 
 if (document.all) {
 	var ie4up = 1;
-}else{
+}
+
+else {
 	var ie4up = 0;
 }
 
 if(document.getElementById && !document.all){
 	var ns6up = 1;
-}else{
+}
+
+else{
 	var ns6up = 0;
 }
 
