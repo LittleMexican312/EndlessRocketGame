@@ -62,7 +62,7 @@ var bullet = {
     isDead: true,
 };
 
-//Bullet Image
+//Bullet Image32
 bullet.image.src = "bullet.png";
 
 //Bullet Speed
