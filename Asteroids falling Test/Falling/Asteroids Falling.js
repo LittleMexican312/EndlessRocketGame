@@ -1,11 +1,17 @@
-var image="asteroid.png";
+//Setting of Canvas
+var canvas = document.getElementById("gameCanvas");
+var context = canvas.getContext("2d");
+
+//Screen Variables
+var SCREEN_HEIGHT = canvas.height;
+var SCREEN_WIDTH = canvas.width;
+
+var image = "asteroid.png";
 var no = 15; // number of asteroids falling at once
 var speed = 70; // falling speed
-var i, dwidth = 480, dheight =640; 
-var nht = dheight;
 var toppos = 0;
 
-if(document.all){
+if (document.all) {
 	var ie4up = 1;
 }else{
 	var ie4up = 0;
@@ -47,8 +53,6 @@ if(timer)
 	clearTimeout(timer);
 }
 toppos = a[1];
-dheight = nht+a[1];
-//alert(dheight);
 
 timer = setTimeout('ranrot()',2000);
 }
@@ -74,7 +78,6 @@ else if (ie4up) {
 	dheight = iecompattest().clientHeight;
 }
 
-nht = dheight;
 
 var cv = new Array();
 var px = new Array();       //position variables
