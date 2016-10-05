@@ -42,6 +42,9 @@ var menuTimer = 3;
 var controlsTimer = 3;
 var gameTimer = 0;
 
+// Lives
+var Lives = 3;
+
 //Game Variables
 var menuimage = new menuimage();
 var controlsImage = new controlsImage();
