@@ -138,80 +138,6 @@ function run () {
     }
 }
 
-// newly spawned objects start at Y=25
-var spawnLineY = -10;
-
-// spawn a new object every 1500ms
-var spawnRate = 1000;
-
-// set how fast the objects will fall
-var spawnRateOfDescent = 0.5;
-
-// when was the last object spawned
-var lastSpawn = -1;
-
-// this array holds all spawned object
-var objects = [];
-
-// save the starting time (used to calc elapsed time)
-var startTime = Date.now();
-
-function getRandomImage () {
-var randomImageArray = new Array();
-    randomImageArray[1] = 1;
-    randomImageArray[2] = 2;
-    randomImageArray[3] = 3;
-var randomArrayNumber = randomImageArray[Math.floor(Math.random() * randomImageArray.length)];
-console.log(randomArrayNumber);
-}
-getRandomImage();
-
-var object = function spawnRandomObject() {
-    this.image = document.createElement("img");
-    this.x = 0;
-    this.y = 0;
-
-    if (randomImageArray = 1) {
-        this.image.src = "asteroid1.png";
-        getRandomImage();
-    }
-    if (randomArrayNumber = 2) {
-        this.image.src = "asteroid2.png";
-        getRandomImage();
-    }
-    if (randomImageArray = 3) {
-        this.image.src = "asteroid3.png";
-        getRandomImage();
-    }
-
-    objects.push(object);
-}
-function animate() {
-
-    // get the elapsed time
-    var time = Date.now();
-
-    // see if its time to spawn a new object
-    if (time > (lastSpawn + spawnRate)) {
-        lastSpawn = time;
-        spawnRandomObject();
-    }
-
-
-    // move each object down the canvas
-    for (var i = 0; i < objects.length; i++) {
-        var object = objects[i];
-        context.beginPath();
-        context.arc(object.x, object.y, 8, 0, Math.PI * 2);
-        context.closePath();
-        context.fillStyle = object.type;
-        context.fill();
-
-        object.y += spawnRateOfDescent;
-    }
-
-}
-
 function runMainMenu(deltaTime) {
     //Background
 	
@@ -246,7 +172,6 @@ function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
     player.draw();
-    animate();
 	
 	gameTimer += deltaTime;
 	
