@@ -96,6 +96,9 @@ function playerShoot()
 //Create array for Asteroid
 var asteroids = [];
 
+//Create array for Star
+var stars = [];
+
 //Random Number for Asteroid Spawning
 function rand(floor, ceil) {
     return Math.floor((Math.random() * (ceil - floor)) + floor);
@@ -221,8 +224,7 @@ function runGame(deltaTime) {
     if (spawnTimer <= 0) {
         spawnTimer = 1;
         spawnAsteroid();
-    }
-    	
+    }	
 }
 function runGameOver(deltaTime) {
 	

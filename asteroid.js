@@ -27,23 +27,23 @@ function spawnAsteroid() {
 	//Random Image Chooser
 	if (between(type, 0, 1)) {
 		asteroid.image.src = "asteroid1.png";
-	};
+	}
 	if (between(type, 1, 2)) {
 		asteroid.image.src = "asteroid2.png";
-	};
+	}
 	if (between(type, 2, 3)) {
 		asteroid.image.src = "asteroid3.png";
-	};
+	}
 	if (between(type, 3, 4)) {
 		asteroid.image.src = "asteroid4.png";
-	};
+	}
 	if (between(type, 4, 5)) {
 		asteroid.image.src = "asteroid5.png";
-	};
+	}
 
 
 	var x = rand(0, SCREEN_WIDTH);
-	var y = rand(-200, -100)
+	var y = rand(-200, -100);
 
 	var dirX = 0;
 	var dirY = ASTEROID_SPEED;
