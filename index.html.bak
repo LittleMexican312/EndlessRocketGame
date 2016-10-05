@@ -8,10 +8,6 @@
   font-size: 100%;
 }
 
-#font {
-  font-size: 80%;
-}
-
 </style></head>
   <body>
     <p><strong id="Title">Endless Rocket Game</strong></p>
@@ -26,7 +22,7 @@
     <script src="sprite.js"></script>
     <script src="asteroid.js"></script>
     <script src="main.js"></script>
-    <p><strong></strong><strong id="font"><a href="howto.html">How To Play</a>&nbsp;&nbsp;&nbsp;
+    <p><strong></strong><strong><a href="howto.html">How To Play</a>&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <a href="about.html">About
           the Developer</a></strong> </p>
     <p><strong></strong><br>
