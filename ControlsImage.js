@@ -1,12 +1,4 @@
-//Setting of Canvas
-var canvas = document.getElementById("gameCanvas");
-var context = canvas.getContext("2d");
-
-//Screen Variables
-var SCREEN_HEIGHT = canvas.height;
-var SCREEN_WIDTH = canvas.width;
-
-var menuimage = function() {
+var controlsImage = function() {
 	this.image = document.createElement("img");
 	
 	this.position = new Vector2();
@@ -18,13 +10,13 @@ var menuimage = function() {
 	this.offset = new Vector2();
 	this.offset.set(-159,-163);
 	
-	this.image.src = "Menu image.png";
+	this.image.src = "Controls Image.png";
 		
 	this.velocity = new Vector2();
 	
 };
 
-menuimage.prototype.draw = function()
+controlsImage.prototype.draw = function()
 {
 	context.save();
 	context.translate(this.position.x, this.position.y);

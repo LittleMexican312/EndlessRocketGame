@@ -30,18 +30,21 @@ function getDeltaTime() {
 
 //Game State Variables
 var STATE_MENUSCREEN = 0;
-var STATE_GAME = 1;
-var STATE_GAMEOVER = 2;
-var STATE_UPGRADEMENU = 3;
+var STATE_CONTROLS = 1;
+var STATE_GAME = 2;
+var STATE_GAMEOVER = 3;
+var STATE_UPGRADEMENU = 4;
 
 var gameState = STATE_MENUSCREEN;
 
 //Timers
 var menuTimer = 3;
+var controlsTimer = 3;
 var gameTimer = 0;
 
 //Game Variables
 var menuimage = new menuimage();
+var controlsImage = new controlsImage();
 var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
@@ -116,6 +119,9 @@ function run () {
     switch (gameState) {
         case STATE_MENUSCREEN:
             runMainMenu(deltaTime);
+            break;
+		case STATE_CONTROLS:
+            runcontrols(deltaTime);
             break;
         case STATE_GAME:
             runGame(deltaTime);			
@@ -212,11 +218,27 @@ function runMainMenu(deltaTime) {
     //Menu Timer
     menuTimer -= deltaTime;
     if (menuTimer <= 0) {
+        gameState = STATE_CONTROLS;
+    }
+
+
+}
+
+function runcontrols(deltaTime) {
+    //Background
+	
+	controlsImage.draw();
+	
+	
+    //Controls Timer
+    controlsTimer -= deltaTime;
+    if (controlsTimer <= 0) {
         gameState = STATE_GAME;
     }
 
 
 }
+
 function runGame(deltaTime) {	
 	background.draw();
     player.update(deltaTime);
@@ -242,10 +264,13 @@ function runGame(deltaTime) {
     if (bullet.x < 0 || bullet.x > SCREEN_WIDTH || bullet.y < 0 || bullet.y > SCREEN_HEIGHT) {
         bullet.isDead = true;
     }
-    
-	
+    	
 }
 function runGameOver(deltaTime) {
+	
+	if (gameState = STATE_GAMEOVER) {
+        bullet.isDead = true;
+	}
 	
 	// we will make this look better if we have more time at the end just added this so we had something there
 	// and when you press R to restart the balls (soon to be changed to asteroids) dont reset need to fix that
@@ -269,7 +294,7 @@ function runGameOver(deltaTime) {
 	context.fillStyle = "#000";
 	context.font="24px Arial";
 	context.fillText("Press R To Restart", 150, 360);
-	
+		
 	if (keyboard.isKeyDown(keyboard.KEY_R) == true)
 	{
 		context.clearRect(0, 0, canvas.width, canvas.height);
