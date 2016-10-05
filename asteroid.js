@@ -4,20 +4,43 @@
 function rand(floor, ceil) {
 	return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
+
+//Between Number Creation
+function between(x, min, max) {
+  return x >= min && x <= max;
+}
+
 //Setting of Asteroid Speed
 var ASTEROID_SPEED = 0.01;
 
 function spawnAsteroid() {
 
-	var type = rand(0, 3);
-
+	var type = rand(0, 5);
+	
 	//Create Asteroid
 	var asteroid = {};
 	asteroid.image = document.createElement("img");
-	asteroid.image.src = "asteroid1.png";
 	asteroid.width = 69;
 	asteroid.height = 75;
 	asteroid.length = 1;
+
+	//Random Image Chooser
+	if (between(type, 0, 1)) {
+		asteroid.image.src = "asteroid1.png";
+	};
+	if (between(type, 1, 2)) {
+		asteroid.image.src = "asteroid2.png";
+	};
+	if (between(type, 2, 3)) {
+		asteroid.image.src = "asteroid3.png";
+	};
+	if (between(type, 3, 4)) {
+		asteroid.image.src = "asteroid4.png";
+	};
+	if (between(type, 4, 5)) {
+		asteroid.image.src = "asteroid5.png";
+	};
+
 
 	var x = rand(0, SCREEN_WIDTH);
 	var y = rand(-200, -100)

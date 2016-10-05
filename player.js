@@ -77,7 +77,8 @@ Player.prototype.update = function(deltaTime)
 	if (down == true) {
 		this.position.y += PLAYER_SPEED * ROCKET_SPEED;
 	}
-	if (space == true){
+	if (space == true && shootTimer <= 0){
+		shootTimer += 0.3;
 		playerShoot();
 	}
 		

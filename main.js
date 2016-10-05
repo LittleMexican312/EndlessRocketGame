@@ -42,6 +42,7 @@ var menuTimer = 3;
 var controlsTimer = 3;
 var gameTimer = 0;
 var spawnTimer = 0;
+var shootTimer = 0;
 
 
 // Lives
@@ -55,23 +56,7 @@ var player = new Player();
 var keyboard = new Keyboard();
 
 //Create Bullet
-var bullet = {
-    image: document.createElement("img"),
-
-    x: player.position.x,
-    y: player.position.y,
-
-    width: 5,
-    height: 5,
-
-    velocityX: 0,
-    velocityY: 0,
-
-    isDead: true,
-};
-
-//Bullet Image32
-bullet.image.src = "bullet.png";
+var bullets = [];
 
 //Bullet Speed
 var BULLET_SPEED = 4;
@@ -79,8 +64,16 @@ var BULLET_SPEED = 4;
 //Player Shooting Function
 function playerShoot()
 {
-    if(bullet.isDead == false )
-        return;
+    var bullet = {
+        image: document.createElement("img"),
+        x: 0,
+        y: 0,
+        width: 5,
+        height: 5,
+        velocityX: 0,
+        velocityY: 0
+    };
+    bullet.image.src = "bullet.png";
 
     var velX = 0;
     var velY = -1;
@@ -97,7 +90,7 @@ function playerShoot()
     bullet.x = player.position.x;
     bullet.y = player.position.y;
 
-	bullet.isDead = false;
+	bullets.push(bullet);
 }
 
 //Create array for Asteroid
@@ -183,17 +176,35 @@ function runGame(deltaTime) {
 	var gameTimerText = "Time Left:" + gameTimer.toFixed(0);
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
 
-    // Bullet Functionality
-    if (bullet.isDead == false) {
-        bullet.x += bullet.velocityX;
-        bullet.y += bullet.velocityY;
-        context.drawImage(bullet.image,
-            bullet.x - bullet.width / 2, bullet.y - bullet.height / 2);
+    //== BULLET STUFF ==//
+
+    //Shoot Timer
+    if(shootTimer > 0)
+        shootTimer -= deltaTime;
+
+    //Bullet Functionality
+    for (var i = 0; i < bullets.length; i++) {
+        bullets[i].x += bullets[i].velocityX;
+        bullets[i].y += bullets[i].velocityY;
     }
-    //Bullet Restrictions w/ Wall
-    if (bullet.x < 0 || bullet.x > SCREEN_WIDTH || bullet.y < 0 || bullet.y > SCREEN_HEIGHT) {
-        bullet.isDead = true;
+    for (var i = 0; i < bullets.length; i++) {
+        if (bullets[i].x < -bullets[i].width ||
+            bullets[i].x > SCREEN_WIDTH ||
+            bullets[i].y < -bullets[i].height ||
+            bullets[i].y > SCREEN_HEIGHT) {
+            bullets.splice(i, 1);
+            break;
+        }
     }
+
+    //Draw Bullets
+    for (var i = 0; i < bullets.length; i++) {
+        context.drawImage(bullets[i].image,
+            bullets[i].x - bullets[i].width / 2,
+            bullets[i].y - bullets[i].height / 2);
+    }
+
+    //=== ASTEROID STUFF ===//
 
     //Update Asteroids
     for (var i = 0; i < asteroids.length; i++) {
@@ -214,10 +225,6 @@ function runGame(deltaTime) {
     	
 }
 function runGameOver(deltaTime) {
-	
-	if (gameState = STATE_GAMEOVER) {
-        bullet.isDead = true;
-	}
 	
 	// we will make this look better if we have more time at the end just added this so we had something there
 	// and when you press R to restart the balls (soon to be changed to asteroids) dont reset need to fix that
