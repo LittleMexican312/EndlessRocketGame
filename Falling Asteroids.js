@@ -49,7 +49,7 @@ function spawnAsteroid()
 	// now we can multiply the dirX/Y by the screen width to move that amount from
 	// the centre of the screen
 	
-	var movX = dirX * SCREEN_WIDTH;
+	var movX = 0
 	var movY = dirY * SCREEN_HEIGHT;
 	
 	// add the direction to the original position to get the starting position of the
