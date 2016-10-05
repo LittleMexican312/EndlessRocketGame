@@ -41,6 +41,8 @@ var gameState = STATE_MENUSCREEN;
 var menuTimer = 3;
 var controlsTimer = 3;
 var gameTimer = 0;
+var spawnTimer = 0;
+
 
 // Lives
 var Lives = 3;
@@ -124,7 +126,7 @@ function run () {
             runMainMenu(deltaTime);
             break;
 		case STATE_CONTROLS:
-            runcontrols(deltaTime);
+            runControls(deltaTime);
             break;
         case STATE_GAME:
             runGame(deltaTime);			
@@ -153,7 +155,7 @@ function runMainMenu(deltaTime) {
 
 }
 
-function runcontrols(deltaTime) {
+function runControls(deltaTime) {
     //Background
 	
 	controlsImage.draw();
@@ -191,6 +193,23 @@ function runGame(deltaTime) {
     //Bullet Restrictions w/ Wall
     if (bullet.x < 0 || bullet.x > SCREEN_WIDTH || bullet.y < 0 || bullet.y > SCREEN_HEIGHT) {
         bullet.isDead = true;
+    }
+
+    //Update Asteroids
+    for (var i = 0; i < asteroids.length; i++) {
+        asteroids[i].x = asteroids[i].x + asteroids[i].velocityX;
+        asteroids[i].y = asteroids[i].y + asteroids[i].velocityY;
+    }
+
+    //Draw all Asteroids
+    for (var i = 0; i < asteroids.length; i++) {
+        context.drawImage(asteroids[i].image, asteroids[i].x - asteroids[i].width / 2,
+            asteroids[i].y - asteroids[i].height / 2);
+    }
+    spawnTimer -= deltaTime;
+    if (spawnTimer <= 0) {
+        spawnTimer = 1;
+        spawnAsteroid();
     }
     	
 }
@@ -234,10 +253,6 @@ function runGameOver(deltaTime) {
 }
 function runUpgradeMenu(deltaTime) {
 }
-
-
-
-
 
 // ---- DO NOT EDIT ANYTHING BELOW THIS FRIENDS ---- //
 (function () {
