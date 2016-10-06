@@ -246,7 +246,7 @@ function runGame(deltaTime) {
             bullets[i].y - bullets[i].height / 2);
     }
 
-        //== STAR STUFF ==//
+    //== STAR STUFF ==//
     //Star one
 
     //Update Stars
@@ -262,7 +262,7 @@ function runGame(deltaTime) {
     }
     spawnStarOneTimer -= deltaTime;
     if (spawnStarOneTimer <= 0) {
-        spawnStarOneTimer = 0.05;
+        spawnStarOneTimer = 0.02;
         spawnStarOne();
     }
 
@@ -280,10 +280,9 @@ function runGame(deltaTime) {
     }
     spawnStarTwoTimer -= deltaTime;
     if (spawnStarTwoTimer <= 0) {
-        spawnStarTwoTimer = 0.05;
+        spawnStarTwoTimer = 0.03;
         spawnSecondStar();
     }
-    
     //=== ASTEROID STUFF ===//
 
     //Update Asteroids
@@ -334,7 +333,7 @@ function runGameOver(deltaTime) {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		gameState = STATE_GAME;
 		gameTimer = 0;
-		player.position.set(200, 200);
+		player.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 	}
 	
 }

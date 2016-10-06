@@ -5,15 +5,15 @@ function rand(floor, ceil) {
 }
 
 //Setting of Asteroid Speed
-var STAR_SPEED = 5;
+var STAR_SPEED = 7.5;
 
 function spawnStarOne() {
 	
 	//Create Asteroid
 	var star = {};
 	star.image = document.createElement("img");
-	star.width = 7;
-	star.height = 7;
+	star.width = 4;
+	star.height = 4;
 	star.length = 1;
 
     star.image.src = "star1.png";

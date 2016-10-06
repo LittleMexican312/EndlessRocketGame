@@ -5,15 +5,15 @@ function rand(floor, ceil) {
 }
 
 //Setting of Asteroid Speed
-var SECONDSTAR_SPEED = 3;
+var SECONDSTAR_SPEED = 5;
 
 function spawnSecondStar() {
 
 	//Create Asteroid
 	var secondStar = {};
 	secondStar.image = document.createElement("img");
-	secondStar.width = 5;
-	secondStar.height = 5;
+	secondStar.width = 3;
+	secondStar.height = 3;
 	secondStar.length = 1;
 
 	secondStar.image.src = "star2.png";
