@@ -52,7 +52,7 @@ Player.prototype.update = function(deltaTime)
 	if((keyboard.isKeyDown(keyboard.KEY_DOWN) == true)  || (keyboard.isKeyDown(keyboard.KEY_S) == true))
 	{
 		down = true;
-		this.image.src = "Rocket3.png";
+		this.image.src = "Rocket1.png";
 	}
 				
 	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
