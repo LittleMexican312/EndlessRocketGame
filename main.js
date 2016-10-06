@@ -134,6 +134,43 @@ function run () {
             runUpgradeMenu(deltaTime);
             break;
     }
+		
+	// check if any bullet intersects any asteroid. If so, kill them both
+for(var i=0; i<asteroids.length; i++)
+{
+	for(var j=0; j<bullets.length; j++)
+	{
+		if(intersects(
+		bullets[j].x - bullets[j].width/2, bullets[j].y -
+			bullets[j].height/2,
+			bullets[j].width, bullets[j].height,
+			asteroids[i].x - asteroids[i].width/2, asteroids[i].y,
+			asteroids[i].height/2,
+			asteroids[i].width, asteroids[i].height) == true)
+		{
+			asteroids.splice(i, 1);
+			bullets.splice(j, 1);
+			break;
+		}		
+	}	
+}
+
+// tests if two rectangles are intersecting.
+// Pass in the x,y coordinates, width and height of each rectangle.
+// Returns 'true' if the rectangles are intersecting
+function intersects(x1, y1, w1, h1, x2, y2, w2, h2)
+{
+if(y2 + h2 < y1 ||
+x2 + w2 < x1 ||
+x2 > x1 + w1 ||
+y2 > y1 + h1)
+{
+return false;
+}
+return true;
+}
+
+
 }
 
 function runMainMenu(deltaTime) {
@@ -166,7 +203,7 @@ function runControls(deltaTime) {
 
 }
 
-function runGame(deltaTime) {	
+function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
     player.draw();
