@@ -41,7 +41,9 @@ var gameState = STATE_MENUSCREEN;
 var menuTimer = 3;
 var controlsTimer = 3;
 var gameTimer = 0;
-var spawnTimer = 0;
+var spawnAsteroidTimer = 0;
+var spawnStarOneTimer = 0;
+var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 
 
@@ -98,6 +100,7 @@ var asteroids = [];
 
 //Create array for Star
 var stars = [];
+var secondStars = [];
 
 //Random Number for Asteroid Spawning
 function rand(floor, ceil) {
@@ -206,7 +209,6 @@ function runControls(deltaTime) {
 function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
-    player.draw();
 	
 	gameTimer += deltaTime;
 	
@@ -244,6 +246,44 @@ function runGame(deltaTime) {
             bullets[i].y - bullets[i].height / 2);
     }
 
+        //== STAR STUFF ==//
+    //Star one
+
+    //Update Stars
+    for (var i = 0; i < stars.length; i++) {
+        stars[i].x = stars[i].x + stars[i].velocityX;
+        stars[i].y = stars[i].y + stars[i].velocityY;
+    }
+
+    //Draw all Stars
+    for (var i = 0; i < stars.length; i++) {
+        context.drawImage(stars[i].image, stars[i].x - stars[i].width / 2,
+            stars[i].y - stars[i].height / 2);
+    }
+    spawnStarOneTimer -= deltaTime;
+    if (spawnStarOneTimer <= 0) {
+        spawnStarOneTimer = 0.05;
+        spawnStarOne();
+    }
+
+    //Star Two
+    //Update Stars
+    for (var i = 0; i < secondStars.length; i++) {
+        secondStars[i].x = secondStars[i].x + secondStars[i].velocityX;
+        secondStars[i].y = secondStars[i].y + secondStars[i].velocityY;
+    }
+
+    //Draw all Stars
+    for (var i = 0; i < secondStars.length; i++) {
+        context.drawImage(secondStars[i].image, secondStars[i].x - secondStars[i].width / 2,
+            secondStars[i].y - secondStars[i].height / 2);
+    }
+    spawnStarTwoTimer -= deltaTime;
+    if (spawnStarTwoTimer <= 0) {
+        spawnStarTwoTimer = 0.05;
+        spawnSecondStar();
+    }
+    
     //=== ASTEROID STUFF ===//
 
     //Update Asteroids
@@ -257,11 +297,12 @@ function runGame(deltaTime) {
         context.drawImage(asteroids[i].image, asteroids[i].x - asteroids[i].width / 2,
             asteroids[i].y - asteroids[i].height / 2);
     }
-    spawnTimer -= deltaTime;
-    if (spawnTimer <= 0) {
-        spawnTimer = 1;
+    spawnAsteroidTimer -= deltaTime;
+    if (spawnAsteroidTimer <= 0) {
+        spawnAsteroidTimer = 1;
         spawnAsteroid();
-    }	
+    }
+    player.draw();		
 }
 function runGameOver(deltaTime) {
 	
