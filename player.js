@@ -27,7 +27,7 @@ Player.prototype.update = function(deltaTime)
 	var falling;
 	var PLAYER_SPEED = 2;
 	var FALLING_SPEED = 2.7;
-	var ROCKET_SPEED = 1.5
+	var ROCKET_SPEED = 1.5;
 
 //Check if Key is Down
 	if((keyboard.isKeyDown(keyboard.KEY_LEFT) == true)  || (keyboard.isKeyDown(keyboard.KEY_A) == true))
@@ -111,7 +111,6 @@ Player.prototype.update = function(deltaTime)
         player.position.y += 3; 
 
     }
-	
 }
 	
 Player.prototype.draw = function()

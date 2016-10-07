@@ -46,7 +46,6 @@ var spawnStarOneTimer = 0;
 var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 
-
 // Lives
 var Lives = 3;
 
@@ -158,6 +157,25 @@ for(var i=0; i<asteroids.length; i++)
 	}	
 }
 
+for(var i=0; i<asteroids.length; i++) {
+
+if(intersects(
+	player.x - player.width / 2, player.y - player.height / 2,
+		player.width, player.height,
+		asteroids[i].x - asteroids[i].width/2, asteroids[i].y,
+		asteroids[i].height/2,
+		asteroids[i].width, asteroids[i].height) == true)
+	{
+		asteroids.splice(i, 1);
+		player.isDead = true;
+			
+		runGameOver(500);
+			
+		break;
+	}
+}
+
+
 // tests if two rectangles are intersecting.
 // Pass in the x,y coordinates, width and height of each rectangle.
 // Returns 'true' if the rectangles are intersecting
@@ -172,7 +190,6 @@ return false;
 }
 return true;
 }
-
 
 }
 
@@ -215,7 +232,7 @@ function runGame(deltaTime) {
 	// Game Timer
 	context.fillStyle = "white";
 	context.font = "16px Arial";
-	var gameTimerText = "Time Left:" + gameTimer.toFixed(0);
+	var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
 
     //== BULLET STUFF ==//
