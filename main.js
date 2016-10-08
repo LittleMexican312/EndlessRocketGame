@@ -49,6 +49,9 @@ var shootTimer = 0;
 // Lives
 var Lives = 3;
 
+//score
+var score = 0;
+
 //Game Variables
 var menuimage = new menuimage();
 var controlsImage = new controlsImage();
@@ -150,7 +153,7 @@ for(var i=0; i<asteroids.length; i++)
 			asteroids[i].height/2,
 			asteroids[i].width, asteroids[i].height) == true)
 		{
-			asteroids.splice(i, 1);
+			asteroids.splice(i, 1); score += 1;
 			bullets.splice(j, 1);
 			break;
 		}		
@@ -234,6 +237,12 @@ function runGame(deltaTime) {
 	context.font = "16px Arial";
 	var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+
+    // score
+context.fillStyle = "red";
+context.font="16px Arial";
+var scoreText = "Score: " + score;
+context.fillText(scoreText, SCREEN_WIDTH - 170, 35);
 
     //== BULLET STUFF ==//
 
