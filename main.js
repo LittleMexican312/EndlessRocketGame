@@ -49,6 +49,10 @@ var shootTimer = 0;
 // Lives
 var Lives = 3;
 
+// load an image to draw Hearts
+var livesImage = document.createElement("img");
+livesImage.src = "heart.png";
+
 //score
 var score = 0;
 
@@ -160,23 +164,7 @@ for(var i=0; i<asteroids.length; i++)
 	}	
 }
 
-for(var i=0; i<asteroids.length; i++) {
 
-if(intersects(
-	player.x - player.width / 2, player.y - player.height / 2,
-		player.width, player.height,
-		asteroids[i].x - asteroids[i].width/2, asteroids[i].y,
-		asteroids[i].height/2,
-		asteroids[i].width, asteroids[i].height) == true)
-	{
-		asteroids.splice(i, 1);
-		player.isDead = true;
-			
-		runGameOver(500);
-			
-		break;
-	}
-}
 
 
 // tests if two rectangles are intersecting.
@@ -239,10 +227,16 @@ function runGame(deltaTime) {
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
 
     // score
-context.fillStyle = "red";
-context.font="16px Arial";
-var scoreText = "Score: " + score;
-context.fillText(scoreText, SCREEN_WIDTH - 170, 35);
+	context.fillStyle = "white";
+	context.font="16px Arial";
+	var scoreText = "Asteroids Destroyed: " + score;
+	context.fillText(scoreText, SCREEN_WIDTH - 185, 35);
+
+	// lives counter
+	for(var i=0; i<Lives; i++)
+	{
+		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
+	}
 
     //== BULLET STUFF ==//
 
@@ -360,6 +354,8 @@ function runGameOver(deltaTime) {
 		gameState = STATE_GAME;
 		gameTimer = 0;
 		player.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+		score = 0;
+		Lives = 3;
 	}
 	
 }
