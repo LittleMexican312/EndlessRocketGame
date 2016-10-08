@@ -51,7 +51,7 @@ var Lives = 3;
 
 // load an image to draw Hearts
 var livesImage = document.createElement("img");
-livesImage.src = "heart.png";
+livesImage.src = "Lives.png";
 
 //score
 var score = 0;
