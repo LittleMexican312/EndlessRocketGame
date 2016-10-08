@@ -230,7 +230,7 @@ function runGame(deltaTime) {
 	context.fillStyle = "white";
 	context.font="16px Arial";
 	var scoreText = "Asteroids Destroyed: " + score;
-	context.fillText(scoreText, SCREEN_WIDTH - 185, 35);
+	context.fillText(scoreText, SCREEN_WIDTH - 185, 40);
 
 	// lives counter
 	for(var i=0; i<Lives; i++)
@@ -346,7 +346,11 @@ function runGameOver(deltaTime) {
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
-	context.fillText("Press R To Restart", 150, 360);
+	context.fillText("You Destroyed " + score + " Asteroids", 150, 360);
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("Press R To Restart", 150, 390);
 		
 	if (keyboard.isKeyDown(keyboard.KEY_R) == true)
 	{
