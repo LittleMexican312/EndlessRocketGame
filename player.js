@@ -111,6 +111,10 @@ Player.prototype.update = function(deltaTime)
         player.position.y += 3; 
 
     }
+	
+	if (bullets.x < 0 || bullets.x > SCREEN_WIDTH || bullets.y < 0 || bullets.y > SCREEN_HEIGHT) {
+          bullet.isDead = true;
+      }
 }
 	
 Player.prototype.draw = function()

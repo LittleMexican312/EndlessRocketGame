@@ -325,6 +325,8 @@ function runGame(deltaTime) {
 }
 function runGameOver(deltaTime) {
 	
+	bullets.isDead = true;
+	
 	// we will make this look better if we have more time at the end just added this so we had something there
 	// and when you press R to restart the asteroids dont reset need to fix that
 	
@@ -351,7 +353,7 @@ function runGameOver(deltaTime) {
 	context.fillStyle = "#000";
 	context.font="24px Arial";
 	context.fillText("Press R To Restart", 150, 390);
-		
+	
 	if (keyboard.isKeyDown(keyboard.KEY_R) == true)
 	{
 		context.clearRect(0, 0, canvas.width, canvas.height);
@@ -359,7 +361,7 @@ function runGameOver(deltaTime) {
 		gameTimer = 0;
 		player.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 		score = 0;
-		Lives = 3;
+		lives = 3;
 	}
 	
 }
