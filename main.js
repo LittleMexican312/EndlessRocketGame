@@ -326,7 +326,7 @@ function runGame(deltaTime) {
 function runGameOver(deltaTime) {
 	
 	// we will make this look better if we have more time at the end just added this so we had something there
-	// and when you press R to restart the balls (soon to be changed to asteroids) dont reset need to fix that
+	// and when you press R to restart the asteroids dont reset need to fix that
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
