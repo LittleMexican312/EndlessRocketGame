@@ -47,7 +47,7 @@ var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 
 // Lives
-var Lives = 3;
+var lives = 3;
 
 // load an image to draw Hearts
 var livesImage = document.createElement("img");
@@ -233,7 +233,7 @@ function runGame(deltaTime) {
 	context.fillText(scoreText, SCREEN_WIDTH - 185, 40);
 
 	// lives counter
-	for(var i=0; i<Lives; i++)
+	for(var i=0; i<lives; i++)
 	{
 		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
 	}
@@ -321,7 +321,7 @@ function runGame(deltaTime) {
         spawnAsteroidTimer = 1;
         spawnAsteroid();
     }
-    player.draw();		
+    player.draw();	
 }
 function runGameOver(deltaTime) {
 	
