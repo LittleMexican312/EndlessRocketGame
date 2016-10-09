@@ -11,7 +11,7 @@ function between(x, min, max) {
 }
 
 //Setting of Asteroid Speed
-var ASTEROID_SPEED = 0.01;
+var ASTEROID_SPEED = 0.02;
 
 function spawnAsteroid() {
 

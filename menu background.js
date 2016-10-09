@@ -10,10 +10,10 @@ var menuimage = function() {
 	this.offset = new Vector2();
 	this.offset.set(-159,-163);
 	
-	this.image.src = "Menu image.png";
+	this.image.src = "Menu Image.png";
 		
 	this.velocity = new Vector2();
-	
+		
 };
 
 menuimage.prototype.draw = function()

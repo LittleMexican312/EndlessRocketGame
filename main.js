@@ -165,8 +165,6 @@ for(var i=0; i<asteroids.length; i++)
 }
 
 
-
-
 // tests if two rectangles are intersecting.
 // Pass in the x,y coordinates, width and height of each rectangle.
 // Returns 'true' if the rectangles are intersecting
@@ -185,19 +183,17 @@ return true;
 }
 
 function runMainMenu(deltaTime) {
-    //Background
 	
+    //Background
 	menuimage.draw();
 	
-	
-    //Menu Timer
+	 //Menu Timer
     menuTimer -= deltaTime;
     if (menuTimer <= 0) {
         gameState = STATE_CONTROLS;
     }
-
-
-}
+	
+	}
 
 function runControls(deltaTime) {
     //Background
@@ -217,9 +213,8 @@ function runControls(deltaTime) {
 function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
-	
 	gameTimer += deltaTime;
-	
+		
 	// Game Timer
 	context.fillStyle = "white";
 	context.font = "16px Arial";
