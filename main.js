@@ -164,6 +164,23 @@ for(var i=0; i<asteroids.length; i++)
 	}	
 }
 
+for(var i=0; i<asteroids.length; i++) {
+	
+	if(intersects(
+		player.x - player.width / 2, player.y - player.height / 2,
+			player.width, player.height,
+			asteroids[i].x - asteroids[i].width/2, asteroids[i].y,
+			asteroids[i].height/2,
+			asteroids[i].width, asteroids[i].height) == true)
+		{
+			asteroids.splice(i, 1);
+			player.isDead = true;
+			
+			runGameOver(500);
+			
+			break;
+		}
+}
 
 // tests if two rectangles are intersecting.
 // Pass in the x,y coordinates, width and height of each rectangle.
