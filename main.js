@@ -310,9 +310,13 @@ for(var i=0; i<asteroids.length; i++) {
 			asteroids[i].width, asteroids[i].height) == true)
 		{
 			asteroids.splice(i, 1);
-			player.isDead = true;
+			lives -= 1;
 			
-			runGameOver(500);
+			if (lives == 0) 
+			{
+				gameState = STATE_GAMEOVER;
+			}	
+			
 			
 			break;
 		}
