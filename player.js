@@ -74,7 +74,7 @@ Player.prototype.update = function(deltaTime)
 	if (up == true) {
 		this.position.y -= PLAYER_SPEED * ROCKET_SPEED;
 	}
-	if (down == true) {
+	if (down == true && player.position.y <= SCREEN_HEIGHT - 21 ) {
 		this.position.y += PLAYER_SPEED * ROCKET_SPEED;
 	}
 	if (space == true && shootTimer <= 0){
@@ -96,15 +96,16 @@ Player.prototype.update = function(deltaTime)
 
     if (player.position.x <= 0 + player.width/2) {
 
-        player.position.x += 2; 
+        player.position.x += 2;; 
 
     }  
 
-    if (player.position.y >= SCREEN_HEIGHT - player.height/2) {
-		
-		gameState = STATE_GAMEOVER;
+    if (player.position.y >= SCREEN_HEIGHT - 21) {
 
-    }  
+        player.position.y -= 2.7;
+		down = false; 
+
+    }
 
     if (player.position.y <= 0 + player.height/2) {
 
