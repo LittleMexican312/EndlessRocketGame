@@ -56,6 +56,8 @@ livesImage.src = "Lives.png";
 //score
 var score = 0;
 
+var paused = false;
+
 //Game Variables
 var menuimage = new menuimage();
 var controlsImage = new controlsImage();
@@ -145,19 +147,29 @@ function run () {
     }
 }
 
-var musicBackground;
+var musicMenu;
+var musicInGame;
 var bulletSound;
 
 function initialize() {
 
-	musicBackground = new Howl(
+	musicMenu = new Howl(
 	{
 		urls: ["Menu Music.wav"],
 		loop: true,
 		buffer: true,
 		volume: 0.5
 	} );
-	musicBackground.play();
+	musicMenu.play();
+	musicMenu.loop();
+	
+	musicInGame = new Howl(
+	{
+		urls: ["game play.wav"],
+		loop: true,
+		buffer: true,
+		volume: 0.5
+	} );
 	
 	bulletSound = new Howl(
 	{
@@ -182,12 +194,14 @@ function runMainMenu(deltaTime) {
     menuTimer -= deltaTime;
     if (menuTimer <= 0) {
         gameState = STATE_CONTROLS;
-		musicBackground.stop();
+		musicMenu.stop();
+		musicInGame.play();
     }
 	
 	}
 
 function runControls(deltaTime) {
+
     //Background
 	
 	controlsImage.draw();
@@ -203,6 +217,9 @@ function runControls(deltaTime) {
 }
 
 function runGame(deltaTime) {
+	
+	musicInGame.unmute();
+	
 	background.draw();
     player.update(deltaTime);
 	gameTimer += deltaTime;
@@ -315,6 +332,8 @@ for(var i=0; i<asteroids.length; i++) {
 			if (lives == 0) 
 			{
 				gameState = STATE_GAMEOVER;
+				musicInGame.stop();
+				musicMenu.play();
 			}	
 			
 			
@@ -337,11 +356,9 @@ return false;
 return true;
 }
 
-		
+
 }
 function runGameOver(deltaTime) {
-	
-	bullets.isDead = true;
 	
 	// we will make this look better if we have more time at the end just added this so we had something there
 	// and when you press R to restart the asteroids dont reset need to fix that
@@ -378,6 +395,9 @@ function runGameOver(deltaTime) {
 		player.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 		score = 0;
 		lives = 3;
+		musicMenu.stop();
+		musicInGame.play();
+		bullets.y = SCREEN_WIDTH;
 	}
 	
 }
