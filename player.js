@@ -12,6 +12,8 @@ var Player = function() {
 	this.velocity = new Vector2();
 	
 	this.rotation = 0;
+	
+	this.cooldownTimer = 0;
 };
 
 var positionX = 200;
@@ -54,10 +56,18 @@ Player.prototype.update = function(deltaTime)
 		down = true;
 		this.image.src = "Rocket1.png";
 	}
-				
-	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true)
+	
+	if(this.cooldownTimer > 0)
+	{
+	this.cooldownTimer -= deltaTime;
+	}
+	
+	if(keyboard.isKeyDown(keyboard.KEY_SPACE) == true && this.cooldownTimer <= 0)
 	{
 		space = true;
+		bulletSound.play();
+        this.cooldownTimer = 0.3;
+        // Shoot a bullet
 	}
 
 	if (falling == true) {
@@ -111,6 +121,34 @@ Player.prototype.update = function(deltaTime)
 
         player.position.y += 3; 
 
+    }
+	
+	//== BULLET STUFF ==//
+
+    //Shoot Timer
+    if(shootTimer > 0)
+        shootTimer -= deltaTime;
+
+    //Bullet Functionality
+    for (var i = 0; i < bullets.length; i++) {
+        bullets[i].x += bullets[i].velocityX;
+        bullets[i].y += bullets[i].velocityY;
+    }
+    for (var i = 0; i < bullets.length; i++) {
+        if (bullets[i].x < -bullets[i].width ||
+            bullets[i].x > SCREEN_WIDTH ||
+            bullets[i].y < -bullets[i].height ||
+            bullets[i].y > SCREEN_HEIGHT) {
+            bullets.splice(i, 1);
+            break;
+        }
+    }
+
+    //Draw Bullets
+    for (var i = 0; i < bullets.length; i++) {
+        context.drawImage(bullets[i].image,
+            bullets[i].x - bullets[i].width / 2,
+            bullets[i].y - bullets[i].height / 2);
     }
 	
 	if (bullets.x < 0 || bullets.x > SCREEN_WIDTH || bullets.y < 0 || bullets.y > SCREEN_HEIGHT) {

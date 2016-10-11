@@ -145,6 +145,34 @@ function run () {
     }
 }
 
+var musicBackground;
+var bulletSound;
+
+function initialize() {
+
+	musicBackground = new Howl(
+	{
+		urls: ["Menu Music.wav"],
+		loop: true,
+		buffer: true,
+		volume: 0.5
+	} );
+	musicBackground.play();
+	
+	bulletSound = new Howl(
+	{
+		urls: ["Bullet Sound.wav"],
+		buffer: true,
+		volume: 0.1,
+		onend: function() {
+			isSfxPlaying = false;
+		}
+	} );
+	
+}
+
+initialize();
+
 function runMainMenu(deltaTime) {
 	
     //Background
@@ -154,6 +182,7 @@ function runMainMenu(deltaTime) {
     menuTimer -= deltaTime;
     if (menuTimer <= 0) {
         gameState = STATE_CONTROLS;
+		musicBackground.stop();
     }
 	
 	}
@@ -195,34 +224,6 @@ function runGame(deltaTime) {
 	{
 		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
 	}
-
-    //== BULLET STUFF ==//
-
-    //Shoot Timer
-    if(shootTimer > 0)
-        shootTimer -= deltaTime;
-
-    //Bullet Functionality
-    for (var i = 0; i < bullets.length; i++) {
-        bullets[i].x += bullets[i].velocityX;
-        bullets[i].y += bullets[i].velocityY;
-    }
-    for (var i = 0; i < bullets.length; i++) {
-        if (bullets[i].x < -bullets[i].width ||
-            bullets[i].x > SCREEN_WIDTH ||
-            bullets[i].y < -bullets[i].height ||
-            bullets[i].y > SCREEN_HEIGHT) {
-            bullets.splice(i, 1);
-            break;
-        }
-    }
-
-    //Draw Bullets
-    for (var i = 0; i < bullets.length; i++) {
-        context.drawImage(bullets[i].image,
-            bullets[i].x - bullets[i].width / 2,
-            bullets[i].y - bullets[i].height / 2);
-    }
 
     //== STAR STUFF ==//
     //Star one
