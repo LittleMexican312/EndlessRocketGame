@@ -42,7 +42,7 @@ function spawnAsteroid() {
 	}
 
 
-	var x = rand(0 + asteroid.width/2, 480 - asteroid.width/2);
+	var x = rand(0 + asteroid.width/2, SCREEN_WIDTH-asteroid.width/2);
 	var y = rand(-200, -100);
 
 	var dirX = 0;
