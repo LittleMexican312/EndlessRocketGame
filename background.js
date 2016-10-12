@@ -2,7 +2,7 @@ var background = function() {
 	this.image = document.createElement("img");
 	
 	this.position = new Vector2();
-	this.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+	this.position.set(240, SCREEN_HEIGHT/2);
 	
 	this.width = 480;
 	this.height = 640;

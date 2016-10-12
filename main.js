@@ -28,7 +28,6 @@ function getDeltaTime() {
 // ---- DO NOT EDIT ANYTHING ABOVE THIS FRIENDS ---- //
 
 
-
 //Game State Variables
 var STATE_MENUSCREEN = 0;
 var STATE_CONTROLS = 1;
@@ -57,9 +56,13 @@ livesImage.src = "Lives.png";
 // Asteroids Destroyed
 var asteroidsDestroyed = 0;
 
+<<<<<<< HEAD
+//Game Variables
+=======
 // Game Variables
 var menuimage = new menuimage();
 var controlsImage = new controlsImage();
+>>>>>>> origin/master
 var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
@@ -185,6 +188,13 @@ function initialize() {
 initialize();
 
 function runMainMenu(deltaTime) {
+<<<<<<< HEAD
+ 
+}
+
+function runGame(deltaTime) {
+    background.draw();
+=======
 	
     //Background
 	menuimage.draw();
@@ -220,27 +230,66 @@ function runGame(deltaTime) {
 	musicInGame.unmute();
 	
 	background.draw();
+>>>>>>> origin/master
     player.update(deltaTime);
-	gameTimer += deltaTime;
-		
-	// Game Timer
-	context.fillStyle = "white";
-	context.font = "16px Arial";
-	var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
-	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+    gameTimer += deltaTime;
 
+<<<<<<< HEAD
+    // Game Timer
+    context.fillStyle = "white";
+    context.font = "16px Arial";
+    var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
+    context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+=======
     // AsteroidsDestroyed
 	context.fillStyle = "white";
 	context.font="16px Arial";
 	var asteroidsDestroyedText = "Asteroids Destroyed: " + asteroidsDestroyed;
 	context.fillText(asteroidsDestroyedText, SCREEN_WIDTH - 185, 40);
+>>>>>>> origin/master
 
-	// lives counter
-	for(var i=0; i<lives; i++)
-	{
-		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
-	}
+    // score
+    context.fillStyle = "white";
+    context.font = "16px Arial";
+    var scoreText = "Asteroids Destroyed: " + score;
+    context.fillText(scoreText, SCREEN_WIDTH - 185, 40);
 
+    // lives counter
+    for (var i = 0; i < lives; i++) {
+        context.drawImage(livesImage, 20 + ((livesImage.width + 2) * i), 50);
+    }
+
+<<<<<<< HEAD
+    //== BULLET STUFF ==//
+
+    //Shoot Timer
+    if (shootTimer > 0)
+        shootTimer -= deltaTime;
+
+    //Bullet Functionality
+    for (var i = 0; i < bullets.length; i++) {
+        bullets[i].x += bullets[i].velocityX;
+        bullets[i].y += bullets[i].velocityY;
+    }
+    for (var i = 0; i < bullets.length; i++) {
+        if (bullets[i].x < -bullets[i].width ||
+            bullets[i].x > SCREEN_WIDTH ||
+            bullets[i].y < -bullets[i].height ||
+            bullets[i].y > SCREEN_HEIGHT) {
+            bullets.splice(i, 1);
+            break;
+        }
+    }
+
+    //Draw Bullets
+    for (var i = 0; i < bullets.length; i++) {
+        context.drawImage(bullets[i].image,
+            bullets[i].x - bullets[i].width / 2,
+            bullets[i].y - bullets[i].height / 2);
+    }
+
+=======
+>>>>>>> origin/master
     //== STAR STUFF ==//
     //Star one
 
@@ -297,6 +346,54 @@ function runGame(deltaTime) {
         spawnAsteroid();
     }
     player.draw();
+<<<<<<< HEAD
+
+    // check if any bullet intersects any asteroid. If so, kill them both
+    for (var i = 0; i < asteroids.length; i++) {
+        for (var j = 0; j < bullets.length; j++) {
+            if (intersects(
+                bullets[j].x - bullets[j].width / 2, bullets[j].y -
+                bullets[j].height / 2,
+                bullets[j].width, bullets[j].height,
+                asteroids[i].x - asteroids[i].width / 2, asteroids[i].y - asteroids[i].height / 2,
+                asteroids[i].width, asteroids[i].height) == true) {
+                asteroids.splice(i, 1); score += 1;
+                bullets.splice(j, 1);
+                break;
+            }
+        }
+    }
+
+    for (var i = 0; i < asteroids.length; i++) {
+
+        if (intersects(
+            player.position.x - player.width / 2, player.position.y - player.height / 2,
+            player.width, player.height,
+            asteroids[i].x - asteroids[i].width / 2, asteroids[i].y - asteroids[i].height / 2,
+            asteroids[i].width, asteroids[i].height) == true) {
+            asteroids.splice(i, 1);
+            lives -= 1;
+
+            if (lives == 0) {
+                gameState = STATE_GAMEOVER;
+            }
+
+
+            break;
+        }
+    }
+
+
+    function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
+        if (y2 + h2 < y1 ||
+            x2 + w2 < x1 ||
+            x2 > x1 + w1 ||
+            y2 > y1 + h1) {
+            return false;
+        }
+        return true;
+    }
+=======
 	
 		// check if any bullet intersects any asteroid. If so, kill them both
 for(var i=0; i<asteroids.length; i++)
@@ -339,23 +436,13 @@ for(var i=0; i<asteroids.length; i++) {
 			break;
 		}
 }
-
-// tests if two rectangles are intersecting.
-// Pass in the x,y coordinates, width and height of each rectangle.
-// Returns 'true' if the rectangles are intersecting
-function intersects(x1, y1, w1, h1, x2, y2, w2, h2)
-{
-if(y2 + h2 < y1 ||
-x2 + w2 < x1 ||
-x2 > x1 + w1 ||
-y2 > y1 + h1)
-{
-return false;
-}
-return true;
-}
+>>>>>>> origin/master
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 }
 function runGameOver(deltaTime) {
 	
