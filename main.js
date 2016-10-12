@@ -28,6 +28,7 @@ function getDeltaTime() {
 // ---- DO NOT EDIT ANYTHING ABOVE THIS FRIENDS ---- //
 
 
+
 //Game State Variables
 var STATE_MENUSCREEN = 0;
 var STATE_CONTROLS = 1;
