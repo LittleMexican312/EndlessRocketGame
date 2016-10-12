@@ -7,7 +7,7 @@ var Player = function() {
 	this.width = 40;
 	this.height = 89;
 	
-	this.image.src = "Rocket1.png";
+	this.image.src = "Player Images/Rocket1.png";
 		
 	this.velocity = new Vector2();
 	
@@ -44,17 +44,17 @@ Player.prototype.update = function(deltaTime)
 	}
 	if ((keyboard.isKeyDown(keyboard.KEY_UP) == true) || (keyboard.isKeyDown(keyboard.KEY_W) == true)) {
 		up = true;
-		this.image.src = "Rocket2.png";
+		this.image.src = "Player Images/Rocket2.png";
 		falling = false;
 	} else {
-		this.image.src = "Rocket1.png";
+		this.image.src = "Player Images/Rocket1.png";
 		falling = true;
 	}
 	
 	if((keyboard.isKeyDown(keyboard.KEY_DOWN) == true)  || (keyboard.isKeyDown(keyboard.KEY_S) == true))
 	{
 		down = true;
-		this.image.src = "Rocket1.png";
+		this.image.src = "Player Images/Rocket1.png";
 	}
 	
 	if(this.cooldownTimer > 0)

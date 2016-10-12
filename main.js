@@ -83,7 +83,7 @@ function playerShoot()
         velocityX: 0,
         velocityY: 0
     };
-    bullet.image.src = "bullet.png";
+    bullet.image.src = "Player Images/bullet.png";
 
     var velX = 0;
     var velY = -1;
