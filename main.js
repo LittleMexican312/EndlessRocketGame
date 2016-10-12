@@ -39,9 +39,12 @@ var STATE_UPGRADEMENU = 4;
 var gameState = STATE_MENUSCREEN;
 
 //Timers
+//State Timers
 var menuTimer = 3;
 var controlsTimer = 3;
 var gameTimer = 0;
+
+//Obstacle Timers
 var spawnAlienTimer = 0;
 var spawnAsteroidTimer = 0;
 var spawnStarOneTimer = 0;
@@ -50,6 +53,8 @@ var shootTimer = 0;
 
 // Lives
 var lives = 3;
+
+var alienLives = 3;
 
 // load an image to draw Hearts
 var livesImage = document.createElement("img");
@@ -342,6 +347,46 @@ for(var i=0; i<asteroids.length; i++)
 			break;
 		}		
 	}	
+}
+
+for(var i=0; i<aliens.length; i++)
+{
+	for(var j=0; j<bullets.length; j++)
+	{
+		if(intersects(
+		bullets[j].x - bullets[j].width/2, bullets[j].y -
+			bullets[j].height/2,
+			bullets[j].width, bullets[j].height,
+			aliens[i].x - aliens[i].width/2, aliens[i].y - aliens[i].height/2,
+			aliens[i].width, aliens[i].height) == true)
+		{
+			aliens.splice(i, 1);
+			bullets.splice(j, 1);
+			break;
+		}		
+	}	
+}
+
+for(var i=0; i<aliens.length; i++) {
+	
+	if(intersects(
+		player.position.x - player.width / 2, player.position.y - player.height / 2,
+			player.width, player.height,
+			aliens[i].x - aliens[i].width/2, aliens[i].y - aliens[i].height/2,
+			aliens[i].width, aliens[i].height) == true)
+		{
+			aliens.splice(i, 1);
+			lives -= 1;
+			
+			if (lives == 0) 
+			{
+				gameState = STATE_GAMEOVER;
+				musicInGame.stop();
+				musicMenu.play();
+			}	
+			
+			break;
+		}
 }
 
 for(var i=0; i<asteroids.length; i++) {
