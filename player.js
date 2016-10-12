@@ -66,7 +66,7 @@ Player.prototype.update = function(deltaTime)
 	{
 		space = true;
 		bulletSound.play();
-        this.cooldownTimer = 0.8;
+        this.cooldownTimer = 0.5;
         // Shoot a bullet
 	}
 
