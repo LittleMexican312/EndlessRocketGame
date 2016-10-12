@@ -42,6 +42,7 @@ var menuTimer = 3;
 var controlsTimer = 3;
 var gameTimer = 0;
 var spawnAsteroidTimer = 0;
+var spawnAlienTimer = 0;
 var spawnStarOneTimer = 0;
 var spawnStarTwoTimer = 0;
 var shootTimer = 0;
@@ -105,6 +106,9 @@ function playerShoot()
 	bullets.push(bullet);
 }
 
+
+//create array for alien
+var aliens = [];
 //Create array for Asteroid
 var asteroids = [];
 
@@ -117,6 +121,9 @@ function rand(floor, ceil) {
     return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
 
+//alien Variables
+var ALIEN_SPEED = rand(4, 7);
+var spawnTimer = 0;
 //Asteroid Variables
 var ASTEROID_SPEED = rand(3, 6);
 var spawnTimer = 0;
@@ -327,6 +334,27 @@ function runGame(deltaTime) {
         spawnStarTwoTimer = 0.03;
         spawnSecondStar();
     }
+
+
+// draw the alien
+    for (var i = 0; i < aliens.length; i++) {
+        aliens[i].x = aliens[i].x + aliens[i].velocityX;
+        aliens[i].y = aliens[i].y + aliens[i].velocityY;
+    }
+
+    //Draw all aliens
+    for (var i = 0; i < aliens.length; i++) {
+        context.drawImage(aliens[i].image, aliens[i].x - aliens[i].width / 2,
+            aliens[i].y - aliens[i].height / 2);
+    }
+    spawnAlienTimer -= deltaTime;
+    if (spawnAlienTimer <= 0) {
+        spawnAlien();
+    }
+
+
+
+
     //=== ASTEROID STUFF ===//
 
     //Update Asteroids
