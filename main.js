@@ -349,6 +349,7 @@ function runGame(deltaTime) {
     }
     spawnAlienTimer -= deltaTime;
     if (spawnAlienTimer <= 0) {
+        spawnAlienTimer = 5;
         spawnAlien();
     }
 
