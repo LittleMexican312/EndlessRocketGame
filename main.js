@@ -155,7 +155,7 @@ function initialize() {
 
 	musicMenu = new Howl(
 	{
-		urls: ["Menu Music.wav"],
+		urls: ["Music/Menu Music.wav"],
 		loop: true,
 		buffer: true,
 		volume: 0.5
@@ -165,7 +165,7 @@ function initialize() {
 	
 	musicInGame = new Howl(
 	{
-		urls: ["game play.wav"],
+		urls: ["Music/game play.wav"],
 		loop: true,
 		buffer: true,
 		volume: 0.5
@@ -173,7 +173,7 @@ function initialize() {
 	
 	bulletSound = new Howl(
 	{
-		urls: ["Bullet Sound.wav"],
+		urls: ["Music/Bullet Sound.wav"],
 		buffer: true,
 		volume: 0.1,
 		onend: function() {
