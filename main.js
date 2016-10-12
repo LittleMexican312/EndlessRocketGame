@@ -57,13 +57,9 @@ livesImage.src = "Lives.png";
 // Asteroids Destroyed
 var asteroidsDestroyed = 0;
 
-<<<<<<< HEAD
-//Game Variables
-=======
 // Game Variables
 var menuimage = new menuimage();
 var controlsImage = new controlsImage();
->>>>>>> origin/master
 var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
@@ -195,13 +191,11 @@ function initialize() {
 initialize();
 
 function runMainMenu(deltaTime) {
-<<<<<<< HEAD
  
 }
 
 function runGame(deltaTime) {
     background.draw();
-=======
 	
     //Background
 	menuimage.draw();
@@ -237,23 +231,20 @@ function runGame(deltaTime) {
 	musicInGame.unmute();
 	
 	background.draw();
->>>>>>> origin/master
     player.update(deltaTime);
     gameTimer += deltaTime;
 
-<<<<<<< HEAD
     // Game Timer
     context.fillStyle = "white";
     context.font = "16px Arial";
     var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
     context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
-=======
+	
     // AsteroidsDestroyed
 	context.fillStyle = "white";
 	context.font="16px Arial";
 	var asteroidsDestroyedText = "Asteroids Destroyed: " + asteroidsDestroyed;
 	context.fillText(asteroidsDestroyedText, SCREEN_WIDTH - 185, 40);
->>>>>>> origin/master
 
     // score
     context.fillStyle = "white";
@@ -266,7 +257,6 @@ function runGame(deltaTime) {
         context.drawImage(livesImage, 20 + ((livesImage.width + 2) * i), 50);
     }
 
-<<<<<<< HEAD
     //== BULLET STUFF ==//
 
     //Shoot Timer
@@ -295,8 +285,6 @@ function runGame(deltaTime) {
             bullets[i].y - bullets[i].height / 2);
     }
 
-=======
->>>>>>> origin/master
     //== STAR STUFF ==//
     //Star one
 
@@ -375,7 +363,6 @@ function runGame(deltaTime) {
         spawnAsteroid();
     }
     player.draw();
-<<<<<<< HEAD
 
     // check if any bullet intersects any asteroid. If so, kill them both
     for (var i = 0; i < asteroids.length; i++) {
@@ -422,7 +409,6 @@ function runGame(deltaTime) {
         }
         return true;
     }
-=======
 	
 		// check if any bullet intersects any asteroid. If so, kill them both
 for(var i=0; i<asteroids.length; i++)
@@ -465,13 +451,7 @@ for(var i=0; i<asteroids.length; i++) {
 			break;
 		}
 }
->>>>>>> origin/master
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 }
 function runGameOver(deltaTime) {
 	
