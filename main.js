@@ -53,12 +53,10 @@ var lives = 3;
 var livesImage = document.createElement("img");
 livesImage.src = "Lives.png";
 
-//score
-var score = 0;
+// Asteroids Destroyed
+var asteroidsDestroyed = 0;
 
-var paused = false;
-
-//Game Variables
+// Game Variables
 var menuimage = new menuimage();
 var controlsImage = new controlsImage();
 var background = new background();
@@ -230,11 +228,11 @@ function runGame(deltaTime) {
 	var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
 	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
 
-    // score
+    // AsteroidsDestroyed
 	context.fillStyle = "white";
 	context.font="16px Arial";
-	var scoreText = "Asteroids Destroyed: " + score;
-	context.fillText(scoreText, SCREEN_WIDTH - 185, 40);
+	var asteroidsDestroyedText = "Asteroids Destroyed: " + asteroidsDestroyed;
+	context.fillText(asteroidsDestroyedText, SCREEN_WIDTH - 185, 40);
 
 	// lives counter
 	for(var i=0; i<lives; i++)
@@ -311,7 +309,7 @@ for(var i=0; i<asteroids.length; i++)
 			asteroids[i].x - asteroids[i].width/2, asteroids[i].y - asteroids[i].height/2,
 			asteroids[i].width, asteroids[i].height) == true)
 		{
-			asteroids.splice(i, 1); score += 1;
+			asteroids.splice(i, 1); asteroidsDestroyed += 1;
 			bullets.splice(j, 1);
 			break;
 		}		
@@ -381,11 +379,15 @@ function runGameOver(deltaTime) {
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
-	context.fillText("You Destroyed " + score + " Asteroids", 150, 360);
+	context.fillText("You Destroyed " + asteroidsDestroyed + " Asteroids", 150, 360);
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
-	context.fillText("Press R To Restart", 150, 390);
+	context.fillText("Your Score Is " + asteroidsDestroyed * gameTimer.toFixed(0), 150, 390);
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("Press R To Restart", 150, 420);
 	
 	if (keyboard.isKeyDown(keyboard.KEY_R) == true)
 	{
@@ -393,7 +395,7 @@ function runGameOver(deltaTime) {
 		gameState = STATE_GAME;
 		gameTimer = 0;
 		player.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-		score = 0;
+		asteroidsDestroyed = 0;
 		lives = 3;
 		musicMenu.stop();
 		musicInGame.play();
