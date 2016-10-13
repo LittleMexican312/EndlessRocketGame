@@ -54,14 +54,15 @@ var shootTimer = 0;
 // Lives
 var lives = 3;
 
-var alienLives = 3;
-
 // load an image to draw Hearts
 var livesImage = document.createElement("img");
 livesImage.src = "Lives.png";
 
 // Asteroids Destroyed
 var asteroidsDestroyed = 0;
+
+// Aliens Killed
+var aliensKilled = 0;
 
 // Game Variables
 var menuimage = new menuimage();
@@ -70,43 +71,12 @@ var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
 
+// Arrays
 //Create Bullet
 var bullets = [];
 
 //Bullet Speed
 var BULLET_SPEED = 4;
-
-//Player Shooting Function
-function playerShoot()
-{
-    var bullet = {
-        image: document.createElement("img"),
-        x: 0,
-        y: 0,
-        width: 5,
-        height: 5,
-        velocityX: 0,
-        velocityY: 0
-    };
-    bullet.image.src = "Player Images/bullet.png";
-
-    var velX = 0;
-    var velY = -1;
-
-    var s = Math.sin(player.rotation);
-    var c = Math.cos(player.rotation);
-
-    var xVel = (velX * c) - (velY * s);
-    var yVel = (velX * s) + (velY * c);
-
-    bullet.velocityX = xVel * BULLET_SPEED;
-    bullet.velocityY = yVel * BULLET_SPEED;
-
-    bullet.x = player.position.x;
-    bullet.y = player.position.y;
-
-	bullets.push(bullet);
-}
 
 //create array for alien
 var aliens = [];
@@ -354,13 +324,13 @@ for(var i=0; i<aliens.length; i++)
 	for(var j=0; j<bullets.length; j++)
 	{
 		if(intersects(
-		bullets[j].x - bullets[j].width/2, bullets[j].y -
-			bullets[j].height/2,
+		bullets[j].x - bullets[j].width/2, bullets[j].y - bullets[j].height/2,
 			bullets[j].width, bullets[j].height,
 			aliens[i].x - aliens[i].width/2, aliens[i].y - aliens[i].height/2,
 			aliens[i].width, aliens[i].height) == true)
 		{
-			aliens.splice(i, 1);
+			
+			aliens.splice(i, 1); aliensKilled += 1;
 			bullets.splice(j, 1);
 			break;
 		}		
@@ -448,7 +418,7 @@ function runGameOver(deltaTime) {
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
-	context.fillText("Good Job!", 165, 330);
+	context.fillText("You Killed " + aliensKilled + " Aliens", 150, 330);
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
@@ -456,11 +426,15 @@ function runGameOver(deltaTime) {
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
-	context.fillText("Your Score Is " + asteroidsDestroyed * gameTimer.toFixed(0), 150, 390);
+	context.fillText("Your Score Is " + asteroidsDestroyed * gameTimer.toFixed(0) * aliensKilled, 150, 390);
 	
 	context.fillStyle = "#000";
 	context.font="24px Arial";
-	context.fillText("Press R To Restart", 150, 420);
+	context.fillText("Good Job!", 165, 420);
+	
+	context.fillStyle = "#000";
+	context.font="24px Arial";
+	context.fillText("Press R To Restart", 150, 450);
 	
 	if (keyboard.isKeyDown(keyboard.KEY_R) == true)
 	{
@@ -469,6 +443,7 @@ function runGameOver(deltaTime) {
 		gameTimer = 0;
 		player.position.set(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 		asteroidsDestroyed = 0;
+		aliensKilled = 0;
 		lives = 3;
 		musicMenu.stop();
 		musicInGame.play();
