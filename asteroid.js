@@ -1,5 +1,24 @@
 // Asteroids Falling
 
+
+// Delta Time
+var startFrameMillis = Date.now();
+var endFrameMillis = Date.now();
+
+//Get DeltaTime
+function getDeltaTime() {
+	endFrameMillis = startFrameMillis;
+	startFrameMillis = Date.now();
+
+	var deltaTime = (startFrameMillis - endFrameMillis) * 0.001;
+
+	if (deltaTime > 1)
+		deltaTime = 1;
+
+	return deltaTime;
+}
+
+
 //Random Number Creation
 function rand(floor, ceil) {
 	return Math.floor((Math.random() * (ceil - floor)) + floor);
@@ -10,13 +29,21 @@ function between(x, min, max) {
   return x >= min && x <= max;
 }
 
-function spawnAsteroid() {
+function spawnAsteroid(deltaTime) {
 
 	var type = rand(0, 5);
+	
+	var asteroidSpeedTimer = 1;
 	
 	//Asteroid Variables
 	var ASTEROID_SPEED = rand(3, 6);
 	var spawnTimer = 0;
+	
+	asteroidSpeedTimer -= deltaTime;
+    if (asteroidSpeedTimer <= 0) {
+        asteroidSpeedTimer = rand(3, 6);
+        ASTEROID_SPEED += 1;
+    }
 	
 	//Create Asteroid
 	var asteroid = {};

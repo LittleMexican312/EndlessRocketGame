@@ -10,7 +10,7 @@ function spawnAlien() {
 	var type = rand(0, 5);
 	
 	//alien Variables
-	var ALIEN_SPEED = rand(1, 7);
+	var ALIEN_SPEED = rand(1, 4);
 	var spawnTimer = 0;
 	
 	//Create Alien
