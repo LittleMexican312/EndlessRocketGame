@@ -5,9 +5,6 @@ function rand(floor, ceil) {
 	return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
 
-//Setting of Alien Speed
-
-
 function spawnAlien() {
 	
 	var type = rand(0, 5);

@@ -10,9 +10,6 @@ function between(x, min, max) {
   return x >= min && x <= max;
 }
 
-//Setting of Asteroid Speed
-var ASTEROID_SPEED = 0.02;
-
 function spawnAsteroid() {
 
 	var type = rand(0, 5);
