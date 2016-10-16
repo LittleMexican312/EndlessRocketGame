@@ -401,6 +401,22 @@ return true;
 }
 function runGameOver(deltaTime) {
 	
+	// If you have destroyed 0 asteroids you get one free
+	
+	if (asteroidsDestroyed == 0) {
+		
+		asteroidsDestroyed += 1;
+		
+	}
+	
+	// If you have killed 0 aliens you get one free
+	
+	if (aliensKilled == 0) {
+		
+		aliensKilled +=1;
+		
+	}
+	
 	// we will make this look better if we have more time at the end just added this so we had something there
 	// and when you press R to restart the asteroids dont reset need to fix that
 	
@@ -423,11 +439,11 @@ function runGameOver(deltaTime) {
 	context.fillStyle = "#000";
 	context.font="24px Arial";
 	context.fillText("You Destroyed " + asteroidsDestroyed + " Asteroids", 150, 360);
-	
+
 	context.fillStyle = "#000";
 	context.font="24px Arial";
 	context.fillText("Your Score Is " + asteroidsDestroyed * gameTimer.toFixed(0) * aliensKilled, 150, 390);
-	
+
 	context.fillStyle = "#000";
 	context.font="24px Arial";
 	context.fillText("Good Job!", 165, 420);
