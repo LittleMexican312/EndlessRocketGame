@@ -9,7 +9,7 @@ function rand(floor, ceil) {
 var ALIEN_SPEED = 0.5;
 
 function spawnAlien() {
-
+	
 	var type = rand(0, 5);
 	
 	//Create Alien
@@ -18,11 +18,8 @@ function spawnAlien() {
 	alien.width = 53;
 	alien.height = 28;
 	alien.length = 1;
-
 	
 	alien.image.src = "alien ship.png";
-	
-
 
 	var x = rand(0 + alien.width/2, SCREEN_WIDTH-alien.width/2);
 	var y = rand(-200, -100);
