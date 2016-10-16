@@ -17,6 +17,10 @@ function spawnAsteroid() {
 
 	var type = rand(0, 5);
 	
+	//Asteroid Variables
+	var ASTEROID_SPEED = rand(3, 6);
+	var spawnTimer = 0;
+	
 	//Create Asteroid
 	var asteroid = {};
 	asteroid.image = document.createElement("img");

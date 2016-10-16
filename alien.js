@@ -12,6 +12,10 @@ function spawnAlien() {
 	
 	var type = rand(0, 5);
 	
+	//alien Variables
+	var ALIEN_SPEED = rand(1, 7);
+	var spawnTimer = 0;
+	
 	//Create Alien
 	var alien = {};
 	alien.image = document.createElement("img");

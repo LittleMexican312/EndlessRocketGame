@@ -78,6 +78,12 @@ var bullets = [];
 //Bullet Speed
 var BULLET_SPEED = 4;
 
+//Create Alien Bullet
+var alienBullets = [];
+
+//Alien Bullet Speed
+var ALIENBULLET_SPEED = 4;
+
 //create array for alien
 var aliens = [];
 
@@ -92,14 +98,6 @@ var secondStars = [];
 function rand(floor, ceil) {
     return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
-
-//alien Variables
-var ALIEN_SPEED = rand(4, 7);
-var spawnTimer = 0;
-
-//Asteroid Variables
-var ASTEROID_SPEED = rand(3, 6);
-var spawnTimer = 0;
 
 // Run Statement
 function run () {	
@@ -463,7 +461,7 @@ function runGameOver(deltaTime) {
 		lives = 3;
 		musicMenu.stop();
 		musicInGame.play();
-		bullets.y = SCREEN_WIDTH;
+		bullets.y = SCREEN_HEIGHT;
 	}
 	
 }
