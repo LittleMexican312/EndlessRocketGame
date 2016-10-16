@@ -6,7 +6,7 @@ function rand(floor, ceil) {
 }
 
 //Setting of Alien Speed
-var ALIEN_SPEED = 0.5;
+
 
 function spawnAlien() {
 	
