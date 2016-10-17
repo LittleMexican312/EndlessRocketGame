@@ -29,21 +29,18 @@ function between(x, min, max) {
   return x >= min && x <= max;
 }
 
+var asteroidSpeedTimer = 0;
+
+var ASTEROIDLOW_SPEED = 5;
+var ASTEROIDHIGH_SPEED = 6;
+
 function spawnAsteroid(deltaTime) {
 
 	var type = rand(0, 5);
 	
-	var asteroidSpeedTimer = 1;
-	
 	//Asteroid Variables
-	var ASTEROID_SPEED = rand(3, 6);
+	var ASTEROID_SPEED = rand(ASTEROIDLOW_SPEED, ASTEROIDHIGH_SPEED);
 	var spawnTimer = 0;
-	
-	asteroidSpeedTimer -= deltaTime;
-    if (asteroidSpeedTimer <= 0) {
-        asteroidSpeedTimer = rand(3, 6);
-        ASTEROID_SPEED += 1;
-    }
 	
 	//Create Asteroid
 	var asteroid = {};
@@ -68,7 +65,6 @@ function spawnAsteroid(deltaTime) {
 	if (between(type, 4, 5)) {
 		asteroid.image.src = "Asteroid Images/asteroid5.png";
 	}
-
 
 	var x = rand(0 + asteroid.width/2, SCREEN_WIDTH-asteroid.width/2);
 	var y = rand(-200, -100);
