@@ -297,6 +297,26 @@ function runGame(deltaTime) {
         spawnAsteroid();
     }
     player.draw();
+
+
+		// check if any asteroids  intersects any aliens. If so, kill the asteroid
+for(var i=0; i<asteroids.length; i++)
+{
+	for(var j=0; j<aliens.length; j++)
+	{
+		if(intersects(
+		aliens[j].x - aliens[j].width/2, aliens[j].y -
+			aliens[j].height/2,
+			aliens[j].width, aliens[j].height,
+			asteroids[i].x - asteroids[i].width/2, asteroids[i].y - asteroids[i].height/2,
+			asteroids[i].width, asteroids[i].height) == true)
+		{
+			asteroids.splice(i, 1)
+			break;
+		}		
+	}	
+}
+
 	
 		// check if any bullet intersects any asteroid. If so, kill them both
 for(var i=0; i<asteroids.length; i++)
