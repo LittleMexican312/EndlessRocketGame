@@ -185,6 +185,7 @@ function runGame(deltaTime) {
 	
 	background.draw();
     player.update(deltaTime);
+	alien.update(deltaTime);
 	gameTimer += deltaTime;
 	asteroidSpeedTimer += deltaTime;
 		
