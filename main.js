@@ -4,6 +4,10 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
+//Mouse Listeners
+canvas.addEventListener("mousemove", checkPos);
+canvas.addEventListener("mouseup", checkClick);
+
 //Screen Variables
 var SCREEN_HEIGHT = canvas.height;
 var SCREEN_WIDTH = canvas.width;
@@ -66,7 +70,6 @@ var aliensKilled = 0;
 
 // Game Variables
 var menuimage = new menuimage();
-var controlsImage = new controlsImage();
 var background = new background();
 var player = new Player();
 var keyboard = new Keyboard();
@@ -93,6 +96,12 @@ var asteroids = [];
 //Create array for Star
 var stars = [];
 var secondStars = [];
+
+//Main Menu Variables
+	var frames = 30;
+    var timerId = 0;
+	var fadeId = 0;
+	var time = 0.0;
 
 //Random Number for Asteroid Spawning
 function rand(floor, ceil) {
@@ -166,33 +175,9 @@ function initialize() {
 initialize();
 
 function runMainMenu(deltaTime) {
-	
-    //Background
-	menuimage.draw();
-	
-	 //Menu Timer
-    menuTimer -= deltaTime;
-    if (menuTimer <= 0) {
-        gameState = STATE_CONTROLS;
-		musicMenu.stop();
-		musicInGame.play();
-    }
-	
-	}
-
-function runControls(deltaTime) {
-
-    //Background
-	
-	controlsImage.draw();
-	
-	
-    //Controls Timer
-    controlsTimer -= deltaTime;
-    if (controlsTimer <= 0) {
-        gameState = STATE_GAME;
-    }
-
+	checkPos(MouseEvent);
+	checkClick(MouseEvent);
+	updateMainMenu();
 
 }
 
