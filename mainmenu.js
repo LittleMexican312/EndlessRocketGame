@@ -71,6 +71,11 @@
 					clearInterval(timerId);
 					canvas.removeEventListener("mousemove", checkPos);
 					canvas.removeEventListener("mouseup", checkClick);
+                    if (i == 0) {
+                        gameState = STATE_GAME;
+                        musicMenu.stop();
+                        musicInGame.play();
+                    }
 				}
 			}
 		}

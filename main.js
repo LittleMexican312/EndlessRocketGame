@@ -54,6 +54,7 @@ var spawnAsteroidTimer = 0;
 var spawnStarOneTimer = 0;
 var spawnStarTwoTimer = 0;
 var shootTimer = 0;
+var asteroidSpeedTimer = 1;
 
 // Lives
 var lives = 3;
@@ -175,10 +176,7 @@ function initialize() {
 initialize();
 
 function runMainMenu(deltaTime) {
-	checkPos(MouseEvent);
-	checkClick(MouseEvent);
 	updateMainMenu();
-
 }
 
 function runGame(deltaTime) {
@@ -188,6 +186,7 @@ function runGame(deltaTime) {
 	background.draw();
     player.update(deltaTime);
 	gameTimer += deltaTime;
+	asteroidSpeedTimer += deltaTime;
 		
 	// Game Timer
 	context.fillStyle = "white";
@@ -205,6 +204,14 @@ function runGame(deltaTime) {
 	for(var i=0; i<lives; i++)
 	{
 		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
+	}
+
+	//Asteroid Speed Changer
+	for (var i=1; i < asteroidSpeedTimer; i++)
+	{
+		ASTEROIDLOW_SPEED + 0.1;
+		ASTEROIDHIGH_SPEED + 0.1;
+		asteroidSpeedTimer = 0;
 	}
 
     //== STAR STUFF ==//

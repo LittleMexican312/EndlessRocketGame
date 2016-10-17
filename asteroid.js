@@ -28,12 +28,12 @@ function rand(floor, ceil) {
 function between(x, min, max) {
   return x >= min && x <= max;
 }
+var ASTEROIDLOW_SPEED = 5;
+var ASTEROIDHIGH_SPEED = 6;
 
 function spawnAsteroid(deltaTime) {
 
 	var type = rand(0, 5);
-	
-	var asteroidSpeedTimer = 1;
 	
 	//Asteroid Variables
 	var ASTEROID_SPEED = rand(3, 6);
@@ -41,7 +41,7 @@ function spawnAsteroid(deltaTime) {
 	
 	asteroidSpeedTimer -= deltaTime;
     if (asteroidSpeedTimer <= 0) {
-        asteroidSpeedTimer = rand(3, 6);
+        asteroidSpeedTimer = rand(ASTEROIDLOW_SPEED, ASTEROIDHIGH_SPEED);
         ASTEROID_SPEED += 1;
     }
 	
