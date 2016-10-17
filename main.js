@@ -25,6 +25,10 @@ function getDeltaTime() {
 	return deltaTime;
 }
 
+// ---- DO NOT EDIT ANYTHING ABOVE THIS FRIENDS ---- //
+
+
+
 //Game State Variables
 var STATE_MENUSCREEN = 0;
 var STATE_CONTROLS = 1;
@@ -194,15 +198,11 @@ function runControls(deltaTime) {
 
 function runGame(deltaTime) {
 	
-	console.log(ASTEROIDLOW_SPEED);
-	console.log(ASTEROIDHIGH_SPEED);
 	musicInGame.unmute();
 	
 	background.draw();
     player.update(deltaTime);
 	gameTimer += deltaTime;
-	asteroidSpeedTimer += deltaTime;
-
 		
 	// Game Timer
 	context.fillStyle = "white";
@@ -221,13 +221,8 @@ function runGame(deltaTime) {
 	{
 		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
 	}
-	for (var i=1; i < asteroidSpeedTimer; i++) {
-			ASTEROIDLOW_SPEED = ASTEROIDLOW_SPEED + 0.1;
-			ASTEROIDHIGH_SPEED = ASTEROIDHIGH_SPEED + 0.1;
-			asteroidSpeedTimer = 0;
-	}
 
-//== STAR STUFF ==//
+    //== STAR STUFF ==//
     //Star one
 
     //Update Stars
@@ -235,7 +230,8 @@ function runGame(deltaTime) {
         stars[i].x = stars[i].x + stars[i].velocityX;
         stars[i].y = stars[i].y + stars[i].velocityY;
     }
-	//Draw all Stars
+
+    //Draw all Stars
     for (var i = 0; i < stars.length; i++) {
         context.drawImage(stars[i].image, stars[i].x - stars[i].width / 2,
             stars[i].y - stars[i].height / 2);
@@ -253,6 +249,7 @@ function runGame(deltaTime) {
         secondStars[i].y = secondStars[i].y + secondStars[i].velocityY;
     }
 
+    //Draw all Stars
     for (var i = 0; i < secondStars.length; i++) {
         context.drawImage(secondStars[i].image, secondStars[i].x - secondStars[i].width / 2,
             secondStars[i].y - secondStars[i].height / 2);
@@ -264,7 +261,7 @@ function runGame(deltaTime) {
     }
 
 
-//Draw the Aliens
+// draw the alien
     for (var i = 0; i < aliens.length; i++) {
         aliens[i].x = aliens[i].x + aliens[i].velocityX;
         aliens[i].y = aliens[i].y + aliens[i].velocityY;
@@ -322,73 +319,83 @@ for(var i=0; i<asteroids.length; i++)
 
 	
 		// check if any bullet intersects any asteroid. If so, kill them both
-	for (var i = 0; i < asteroids.length; i++) {
-		for (var j = 0; j < bullets.length; j++) {
-			if (intersects(
-				bullets[j].x - bullets[j].width / 2, bullets[j].y -
-				bullets[j].height / 2,
-				bullets[j].width, bullets[j].height,
-				asteroids[i].x - asteroids[i].width / 2, asteroids[i].y - asteroids[i].height / 2,
-				asteroids[i].width, asteroids[i].height) == true) {
-				asteroids.splice(i, 1); asteroidsDestroyed += 1;
-				bullets.splice(j, 1);
-				break;
-			}
-		}
-	}
+for(var i=0; i<asteroids.length; i++)
+{
+	for(var j=0; j<bullets.length; j++)
+	{
+		if(intersects(
+		bullets[j].x - bullets[j].width/2, bullets[j].y -
+			bullets[j].height/2,
+			bullets[j].width, bullets[j].height,
+			asteroids[i].x - asteroids[i].width/2, asteroids[i].y - asteroids[i].height/2,
+			asteroids[i].width, asteroids[i].height) == true)
+		{
+			asteroids.splice(i, 1); asteroidsDestroyed += 1;
+			bullets.splice(j, 1);
+			break;
+		}		
+	}	
+}
 
-	for (var i = 0; i < aliens.length; i++) {
-		for (var j = 0; j < bullets.length; j++) {
-			if (intersects(
-				bullets[j].x - bullets[j].width / 2, bullets[j].y - bullets[j].height / 2,
-				bullets[j].width, bullets[j].height,
-				aliens[i].x - aliens[i].width / 2, aliens[i].y - aliens[i].height / 2,
-				aliens[i].width, aliens[i].height) == true) {
+for(var i=0; i<aliens.length; i++)
+{
+	for(var j=0; j<bullets.length; j++)
+	{
+		if(intersects(
+		bullets[j].x - bullets[j].width/2, bullets[j].y - bullets[j].height/2,
+			bullets[j].width, bullets[j].height,
+			aliens[i].x - aliens[i].width/2, aliens[i].y - aliens[i].height/2,
+			aliens[i].width, aliens[i].height) == true)
+		{
+			
+			aliens.splice(i, 1); aliensKilled += 1;
+			bullets.splice(j, 1);
+			break;
+		}		
+	}	
+}
 
-				aliens.splice(i, 1); aliensKilled += 1;
-				bullets.splice(j, 1);
-				break;
-			}
-		}
-	}
-
-	for (var i = 0; i < aliens.length; i++) {
-
-		if (intersects(
-			player.position.x - player.width / 2, player.position.y - player.height / 2,
+for(var i=0; i<aliens.length; i++) {
+	
+	if(intersects(
+		player.position.x - player.width / 2, player.position.y - player.height / 2,
 			player.width, player.height,
-			aliens[i].x - aliens[i].width / 2, aliens[i].y - aliens[i].height / 2,
-			aliens[i].width, aliens[i].height) == true) {
+			aliens[i].x - aliens[i].width/2, aliens[i].y - aliens[i].height/2,
+			aliens[i].width, aliens[i].height) == true)
+		{
 			aliens.splice(i, 1);
 			lives -= 1;
-
-			if (lives == 0) {
+			
+			if (lives == 0) 
+			{
 				gameState = STATE_GAMEOVER;
 				musicInGame.stop();
 				musicMenu.play();
-			}
-
+			}	
+			
 			break;
 		}
-	}
+}
 
-	for (var i = 0; i < asteroids.length; i++) {
-
-		if (intersects(
-			player.position.x - player.width / 2, player.position.y - player.height / 2,
+for(var i=0; i<asteroids.length; i++) {
+	
+	if(intersects(
+		player.position.x - player.width / 2, player.position.y - player.height / 2,
 			player.width, player.height,
-			asteroids[i].x - asteroids[i].width / 2, asteroids[i].y - asteroids[i].height / 2,
-			asteroids[i].width, asteroids[i].height) == true) {
+			asteroids[i].x - asteroids[i].width/2, asteroids[i].y - asteroids[i].height/2,
+			asteroids[i].width, asteroids[i].height) == true)
+		{
 			asteroids.splice(i, 1);
 			lives -= 1;
-
-			if (lives == 0) {
+			
+			if (lives == 0) 
+			{
 				gameState = STATE_GAMEOVER;
 				musicInGame.stop();
 				musicMenu.play();
-			}
-
-
+			}	
+			
+			
 			break;
 		}
 }
