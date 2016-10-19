@@ -43,6 +43,9 @@
 	function updateMainMenu() {
 		clearMainMenu();
 		drawMainMenu();
+
+		canvas.addEventListener("mousemove", checkPos);
+		canvas.addEventListener("mouseup", checkClick);
 	}
 	function clearMainMenu() {
 		context.clearRect(0, 0, width, height);
@@ -72,39 +75,6 @@
 					canvas.removeEventListener("mousemove", checkPos);
 					canvas.removeEventListener("mouseup", checkClick);
                     if (i == 0) { 
-                        gameState = STATE_GAME;
-                        musicMenu.stop();
-                        musicInGame.play();
-                    }
-				}
-			}
-		}
-		
-		for(i = 1; i < buttonX.length; i++){
-			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
-				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
-					fadeId = setInterval("fadeOut()", 1000/frames);
-					clearInterval(timerId);
-					canvas.removeEventListener("mousemove", checkPos);
-					canvas.removeEventListener("mouseup", checkClick);
-                    if (i == 1) { 
-                        gameState = STATE_GAME;
-                        musicMenu.stop();
-                        musicInGame.play();
-                    }
-				}
-			}
-		}
-		
-		
-		for(i = 2; i < buttonX.length; i++){
-			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
-				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
-					fadeId = setInterval("fadeOut()", 1000/frames);
-					clearInterval(timerId);
-					canvas.removeEventListener("mousemove", checkPos);
-					canvas.removeEventListener("mouseup", checkClick);
-                    if (i == 2) { 
                         gameState = STATE_GAME;
                         musicMenu.stop();
                         musicInGame.play();
