@@ -5,10 +5,29 @@ function rand(floor, ceil) {
 	return Math.floor((Math.random() * (ceil - floor)) + floor);
 }
 
+
+alien.prototype.update = function() {
+
+    if (player.x > alien.x) {
+        alien.velocityX = 1;
+    }
+    if (player.x < alien.x) {
+        alien.velocityX = -1;
+    }
+    if (player.y > alien.y) {
+        alien.velocityY = 1;
+    }
+    if (player.y < alien.y) {
+        alien.velocityY = -1;
+    }
+
+
+}
+
 function spawnAlien() {
-	
-	var type = rand(0, 5);
-	
+
+var type = rand(0, 5);
+
 	//alien Variables
 	var ALIEN_SPEED = rand(1, 4);
 	var spawnTimer = 0;
@@ -37,5 +56,16 @@ function spawnAlien() {
 	alien.velocityX = -dirX * ALIEN_SPEED;
 	alien.velocityY = ALIEN_SPEED;
 
+
 	aliens.push(alien);
 }
+
+
+
+
+
+
+
+
+
+
