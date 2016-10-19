@@ -9,10 +9,7 @@
     var height = canvas.height;
     
 	var bgImage = new Image();
-	var logoImage = new Image();
-	var playImage = new Image();
-	var aboutImage = new Image ();
-	var controlsImage = new Image ();
+	var backButton = new Image();
 	var backgroundY = 0;
 	var speed = 1;
 	
@@ -22,20 +19,10 @@
 	var buttonHeight = [50,50,50];
 
 	bgImage.src = "Menu Images/Background.png";
-	logoImage.src = "Menu Images/mainTitle.png";
-	playImage.onload = function(){
-		context.drawImage(playImage, buttonX[0], buttonY[0]);
+	backButton.src = "Controls Images/Back button.png";
+	backButton.onload = function(){
+		context.drawImage(backImage, buttonX[1], buttonY[1]);
 	}
-	playImage.src = "Menu Images/playButton.png";
-	aboutImage.onload = function(){
-		context.drawImage(aboutImage, buttonX[1], buttonY[1]);
-	}
-	aboutImage.src = "Menu Images/aboutButton.png";
-	controlsImage.onload = function(){
-		context.drawImage(controlsImage, buttonX[2], buttonY[2]);
-	}
-	controlsImage.src = "Menu Images/controlsButton.png";
-	
 	
 	canvas.addEventListener("mousemove", checkPos);
 	canvas.addEventListener("mouseup", checkClick);
@@ -49,10 +36,7 @@
 	}
 	function drawMainMenu(){
 		context.drawImage(bgImage, 0, backgroundY);
-		context.drawImage(logoImage, 120, 210);
-		context.drawImage(playImage, buttonX[0], buttonY[0]);
-		context.drawImage(aboutImage, buttonX[1], buttonY[1]);
-		context.drawImage(controlsImage, buttonX[2], buttonY[2]);
+		context.drawImage(backButton, buttonX[0], buttonY[0]);
 	}
 	function checkPos(mouseEvent){
 		if(mouseEvent.pageX || mouseEvent.pageY == 0){
@@ -78,42 +62,8 @@
                     }
 				}
 			}
-		}
-		
-		for(i = 1; i < buttonX.length; i++){
-			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
-				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
-					fadeId = setInterval("fadeOut()", 1000/frames);
-					clearInterval(timerId);
-					canvas.removeEventListener("mousemove", checkPos);
-					canvas.removeEventListener("mouseup", checkClick);
-                    if (i == 1) { 
-                        gameState = STATE_GAME;
-                        musicMenu.stop();
-                        musicInGame.play();
-                    }
-				}
-			}
-		}
-		
-		
-		for(i = 2; i < buttonX.length; i++){
-			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
-				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
-					fadeId = setInterval("fadeOut()", 1000/frames);
-					clearInterval(timerId);
-					canvas.removeEventListener("mousemove", checkPos);
-					canvas.removeEventListener("mouseup", checkClick);
-                    if (i == 2) { 
-                        gameState = STATE_GAME;
-                        musicMenu.stop();
-                        musicInGame.play();
-                    }
-				}
-			}
-		}
+		}		
 	}
-	
 	function fadeOut(){
 		context.fillStyle = "rgba(0,0,0, 0.2)";
 		context.fillRect (0, 0, width, height);
