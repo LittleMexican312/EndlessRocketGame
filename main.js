@@ -63,6 +63,7 @@ var lives = 3;
 var livesImage = document.createElement("img");
 livesImage.src = "Lives.png";
 
+
 // Asteroids Destroyed
 var asteroidsDestroyed = 0;
 
