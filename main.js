@@ -73,6 +73,7 @@ var aliensKilled = 0;
 // Game Variables
 var menuimage = new menuimage();
 var background = new background();
+var HUD = new HUD();
 var player = new Player();
 var keyboard = new Keyboard();
 
@@ -185,6 +186,7 @@ function runGame(deltaTime) {
 	musicInGame.unmute();
 	
 	background.draw();
+	HUD.draw();
     player.update(deltaTime);
 	gameTimer += deltaTime;
 	asteroidSpeedTimer += deltaTime;
