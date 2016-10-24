@@ -44,7 +44,7 @@
 	}
 	function drawGameOver(){
 		context.drawImage(gameOverBG, 0, backgroundY);
-		context.drawImage(gameOverTitle, 120, 210);
+		context.drawImage(gameOverTitle, 120, 210)
 		context.drawImage(gameOverPlay, gameOverButtonX[0], gameOverButtonY[0]);
 		context.drawImage(gameOverMain, gameOverButtonX[1], gameOverButtonY[1]);
 	}

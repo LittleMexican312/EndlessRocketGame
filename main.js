@@ -400,7 +400,7 @@ function runGameOver(deltaTime) {
 
 	context.fillStyle = "white";
 	context.font="21px Arial";
-	context.fillText("Points: " + asteroidsDestroyed * gameTimer.toFixed(0) * aliensKilled, 240, 311);
+	context.fillText("Points: " + asteroidsDestroyed * gameTimer.toFixed(0) * aliensKilled, 205, 311);
 
 	
 }
