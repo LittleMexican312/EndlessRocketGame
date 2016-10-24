@@ -61,7 +61,7 @@ var lives = 3;
 
 // load an image to draw Hearts
 var livesImage = document.createElement("img");
-livesImage.src = "Lives.png";
+livesImage.src = "Lives2.png";
 
 
 // Asteroids Destroyed
@@ -206,7 +206,7 @@ function runGame(deltaTime) {
 	// lives counter
 	for(var i=0; i<lives; i++)
 	{
-		context.drawImage(livesImage, 20 + ((livesImage.width+2)*i), 50);
+		context.drawImage(livesImage, 195 + ((livesImage.width+2)*i), 608);
 	}
 
 	//Asteroid Speed Changer
