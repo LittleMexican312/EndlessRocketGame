@@ -173,6 +173,7 @@ function initialize() {
 	} );
 	
 }
+
 initialize();
 
 function runMainMenu(deltaTime) {
@@ -187,7 +188,6 @@ function runGame(deltaTime) {
     player.update(deltaTime);
 	gameTimer += deltaTime;
 	asteroidSpeedTimer += deltaTime;
-	hud.draw();
 		
 	// Game Timer
 	context.fillStyle = "white";
@@ -400,7 +400,7 @@ function runGameOver(deltaTime) {
 
 	context.fillStyle = "white";
 	context.font="21px Arial";
-	context.fillText("Points: " + asteroidsDestroyed * gameTimer.toFixed(0) * aliensKilled, 205, 311);
+	context.fillText("Points: " + asteroidsDestroyed * gameTimer.toFixed(0) * aliensKilled, 240, 311);
 
 	
 }

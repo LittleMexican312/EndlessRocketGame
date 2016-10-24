@@ -14,8 +14,8 @@
 	var backgroundY = 0;
 	var speed = 1;
 	
-	var gameOverButtonX = [250,180];
-	var gameOverButtonY = [319,319];
+	var gameOverButtonX = [283,198];
+	var gameOverButtonY = [349,349];
 	var gameOverButtonWidth = [50,50];
 	var gameOverButtonHeight = [50,50];
 
@@ -44,7 +44,7 @@
 	}
 	function drawGameOver(){
 		context.drawImage(gameOverBG, 0, backgroundY);
-		context.drawImage(gameOverTitle, 130, 260);
+		context.drawImage(gameOverTitle, 120, 210);
 		context.drawImage(gameOverPlay, gameOverButtonX[0], gameOverButtonY[0]);
 		context.drawImage(gameOverMain, gameOverButtonX[1], gameOverButtonY[1]);
 	}
