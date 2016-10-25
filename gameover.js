@@ -72,6 +72,11 @@
                         gameState = STATE_GAME;
                         musicMenu.stop();
                         musicInGame.play();
+						player.position.x = 200;
+						player.position.y = 200;
+						aliensKilled = 0;
+						asteroidsDestroyed = 0;
+						gameTimer = 0;
                         lives = 3;
                     }
 				}

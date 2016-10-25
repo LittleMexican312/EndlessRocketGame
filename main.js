@@ -56,13 +56,23 @@ var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 var asteroidSpeedTimer = 1;
 
+
+//HUD
+
 // Lives
 var lives = 3;
 
-// load an image to draw Hearts
+// Lives Image HUD
 var livesImage = document.createElement("img");
-livesImage.src = "Lives2.png";
+livesImage.src = "HUD/Lives.png";
 
+// Asterooids Destroyed HUD
+var asteroidsDestroyedImage = document.createElement("img");
+asteroidsDestroyedImage.src = "HUD/asteroid.png";
+
+// Aliens Killed HUD
+var AliensKilledImage = document.createElement("img");
+AliensKilledImage.src = "HUD/Alien Ship.png";
 
 // Asteroids Destroyed
 var asteroidsDestroyed = 0;
@@ -195,19 +205,33 @@ function runGame(deltaTime) {
 	context.fillStyle = "white";
 	context.font = "16px Arial";
 	var gameTimerText = "Time Survived:  " + gameTimer.toFixed(0);
-	context.fillText(gameTimerText, SCREEN_WIDTH - 470, 40);
+	context.fillText(gameTimerText, SCREEN_WIDTH - 300, 20);
 
-    // AsteroidsDestroyed
+    // Asteroids Destroyed
 	context.fillStyle = "white";
 	context.font="16px Arial";
-	var asteroidsDestroyedText = "Asteroids Destroyed: " + asteroidsDestroyed;
-	context.fillText(asteroidsDestroyedText, SCREEN_WIDTH - 185, 40);
-
-	// lives counter
+	var asteroidsDestroyedText = " X " + asteroidsDestroyed;
+	context.fillText(asteroidsDestroyedText, SCREEN_WIDTH - 65, 630);
+	
+	// Aliens Killed
+	context.fillStyle = "white";
+	context.font="16px Arial";
+	var aliensKilledText = " X " + aliensKilled;
+	context.fillText(aliensKilledText, SCREEN_WIDTH - 395, 630);
+	
+	// Asteroids Destroyed Counter
+		context.drawImage(asteroidsDestroyedImage, 380, 611);
+	
+	// Aliens Killed Counter
+		context.drawImage(AliensKilledImage, 40, 613);
+	
+	// Lives Counter
 	for(var i=0; i<lives; i++)
 	{
 		context.drawImage(livesImage, 195 + ((livesImage.width+2)*i), 608);
 	}
+
+	
 
 	//Asteroid Speed Changer
 	for (var i=1; i < asteroidSpeedTimer; i++)
