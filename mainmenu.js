@@ -25,41 +25,6 @@
 	var buttonWidth = [50,50,50];
 	var buttonHeight = [50,50,50];
 
-	
-	var selected = 1;
-	var play = 1;
-	var controls = 0;
-	var about = 2;
-
-
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true);
-	{
-		left = true;
-		selected -= 1;
-	}
-	
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true);
-	{
-		right = true;
-		selected += 1;
-	}
-	
-	if(selected = 1) || (keyboard.isKeyDown(keyboard.KEY_ENTER) == true))
-	{
-		gameState = STATE_GAME
-	}
-	
-	if(selected = 0) || (keyboard.isKeyDown(keyboard.KEY_ENTER) == true))
-	{
-		GameState = STATE_CONTROLS
-	}
-	
-	if(selected = 2) == true) || (keyboard.isKeyDown(keyboard.KEY_A) == true))
-	{
-		gameState = STATE_ABOUT
-	}
-
-
 	bgImage.src = "Menu Images/Background.png";
 	logoImage.src = "Menu Images/mainTitle.png";
 	playImage.onload = function(){
@@ -109,6 +74,7 @@
 		for(i = 0; i < buttonX.length; i++){
 			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
 				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
+					clearInterval(timerId);
 					canvas.removeEventListener("mousemove", checkPos);
 					canvas.removeEventListener("mouseup", checkClick);
                     if (i == 0) { 
@@ -116,8 +82,21 @@
                         musicMenu.stop();
                         musicInGame.play();
                     }
-					
 				}
 			}
 		}
 	}
+	
+		for(i = 2; i < buttonX.length; i++){
+			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
+				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
+					clearInterval(timerId);
+					canvas.removeEventListener("mousemove", checkPos);
+					canvas.removeEventListener("mouseup", checkClick);
+                    if (i == 2) { 
+                        gameState = STATE_CONTROLS;
+						context.drawImage(controlsImage, 0, 0);
+                    }
+				}
+			}
+		}
