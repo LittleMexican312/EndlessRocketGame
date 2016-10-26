@@ -1,17 +1,16 @@
               ENDLESS GALAXY WARS 
 
-is a retro style space shooter where you are traveling threw space
-to destroy all aliens from the known universe 
+Endless Galaxy Wars is a retro style space shooter where you are traveling threw space to destroy all aliens from the known universe 
 
 KEY ASPECTS OF THE GAME 
 
-.elimite alien spaceships
+.Elimite alien spaceships
 
-.dodge or destroying asteroids
+.Dodge or destroying asteroids
 
 .3 lives so be carful
 
-.take in turns with your friends and see who can get the best score
+.Take in turns with your friends and see who can get the best score
 
 
 
