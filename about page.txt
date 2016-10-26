@@ -1,23 +1,23 @@
               ENDLESS GALAXY WARS 
 
-Endless Galaxy Wars is a retro style space shooter where you are traveling threw space to destroy all aliens from the known universe 
+Endless Galaxy Wars is a retro style space shooter where you are traveling through space to destroy all aliens from the known universe 
 
 KEY ASPECTS OF THE GAME 
 
-.Elimite alien spaceships
+.Eliminate alien spaceships
 
 .Dodge or destroying asteroids
 
-.3 lives so be carful
+.3 lives so be careful
 
 .Take in turns with your friends and see who can get the best score
 
-
-
+Github Link: https://github.com/LittleMexican312/EndlessRocketGame
+ 
 CREATED BY STUDENT'S AT AIE ONLINE COURSE
 
 .Daniel Filmer
 .Luke Flahavin
-.Arron Swift 
+.Aaron Swift 
 .Travis Hohne
 
