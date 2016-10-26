@@ -1,6 +1,10 @@
     var mouseX;
 	var mouseY;
 	
+	
+	var controlsImage = document.createElement("img");
+	controlsImage.src = "Controls Image.png";
+	
 
     var canvas = document.getElementById("gameCanvas");
     var context = canvas.getContext("2d");
@@ -70,7 +74,6 @@
 		for(i = 0; i < buttonX.length; i++){
 			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
 				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
-					fadeId = setInterval("fadeOut()", 1000/frames);
 					clearInterval(timerId);
 					canvas.removeEventListener("mousemove", checkPos);
 					canvas.removeEventListener("mouseup", checkClick);
@@ -84,42 +87,16 @@
 		}
 	}
 	
-	
-	function checkPos(mouseEvent){
-		if(mouseEvent.pageX || mouseEvent.pageY == 2){
-			mouseX = mouseEvent.pageX - this.offsetLeft;
-			mouseY = mouseEvent.pageY - this.offsetTop;
-		}else if(mouseEvent.offsetX || mouseEvent.offsetY == 2){
-			mouseX = mouseEvent.offsetX;
-			mouseY = mouseEvent.offsetY;
-		}
-	}
-	function checkClick(mouseEvent){
 		for(i = 2; i < buttonX.length; i++){
 			if(mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]){
 				if(mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]){
-					fadeId = setInterval("fadeOut()", 1000/frames);
 					clearInterval(timerId);
 					canvas.removeEventListener("mousemove", checkPos);
 					canvas.removeEventListener("mouseup", checkClick);
                     if (i == 2) { 
                         gameState = STATE_CONTROLS;
+						context.drawImage(controlsImage, 0, 0);
                     }
 				}
 			}
 		}
-	}
-	
-	
-	function fadeOut(){
-		context.fillStyle = "rgba(0,0,0, 0.2)";
-		context.fillRect (0, 0, width, height);
-		time += 0.1;
-		if(time >= 2){
-			clearInterval(fadeId);
-			time = 0;
-			timerId = setInterval("updateMainMenu()", 1000/frames);
-			canvas.addEventListener("mousemove", checkPos);
-			canvas.addEventListener("mouseup", checkClick);
-		}
-	}

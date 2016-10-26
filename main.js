@@ -62,6 +62,8 @@ var asteroidSpeedTimer = 1;
 // Lives
 var lives = 3;
 
+
+
 // Lives Image HUD
 var livesImage = document.createElement("img");
 livesImage.src = "HUD/Lives.png";
@@ -192,7 +194,9 @@ function runMainMenu(deltaTime) {
 }
 
 function runControls(deltaTime) {
-	updateControls();
+	
+
+	
 }
 
 function runGame(deltaTime) {
