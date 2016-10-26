@@ -4,10 +4,6 @@
 var canvas = document.getElementById("gameCanvas");
 var context = canvas.getContext("2d");
 
-//Mouse Listeners
-canvas.addEventListener("mousemove", checkPos);
-canvas.addEventListener("mouseup", checkClick);
-
 //Screen Variables
 var SCREEN_HEIGHT = canvas.height;
 var SCREEN_WIDTH = canvas.width;
@@ -56,13 +52,10 @@ var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 var asteroidSpeedTimer = 1;
 
-
 //HUD
 
 // Lives
 var lives = 3;
-
-
 
 // Lives Image HUD
 var livesImage = document.createElement("img");
