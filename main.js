@@ -191,6 +191,10 @@ function runMainMenu(deltaTime) {
 	updateMainMenu();
 }
 
+function runControls(deltaTime) {
+	updateControls();
+}
+
 function runGame(deltaTime) {
 	
 	musicInGame.unmute();

@@ -1,4 +1,4 @@
-    var mouseX;
+ 	var mouseX;
 	var mouseY;
 	
 
@@ -8,34 +8,38 @@
     var width = canvas.width;
     var height = canvas.height;
     
-	var bgImage = new Image();
 	var backButton = new Image();
-	var backgroundY = 0;
+	var controlsImage = new Image ();
 	var speed = 1;
 	
-	var buttonX = [240,345,135];
-	var buttonY = [385,385,385];
+	var buttonX = [240];
+	var buttonY = [385];
 	var buttonWidth = [50,50,50];
 	var buttonHeight = [50,50,50];
 
-	bgImage.src = "Menu Images/Background.png";
+	controlsImage.src = "Controls Images/Controls Image.png";
 	backButton.src = "Controls Images/Back button.png";
 	backButton.onload = function(){
-		context.drawImage(backImage, buttonX[1], buttonY[1]);
-	}
+		context.drawImage(backButton, buttonX[0], buttonY[0]);
+
+	
 	
 	canvas.addEventListener("mousemove", checkPos);
 	canvas.addEventListener("mouseup", checkClick);
 	
-	function updateMainMenu() {
-		clearMainMenu();
-		drawMainMenu();
+	function updateControls() {
+		clearControls();
+		drawControls();
+
+		canvas.addEventListener("mousemove", checkPos);
+		canvas.addEventListener("mouseup", checkClick);
 	}
-	function clearMainMenu() {
+	function clearControls() {
 		context.clearRect(0, 0, width, height);
 	}
-	function drawMainMenu(){
-		context.drawImage(bgImage, 0, backgroundY);
+	function drawControls(){
+		
+		context.drawImage(controlsImage, 0);
 		context.drawImage(backButton, buttonX[0], buttonY[0]);
 	}
 	function checkPos(mouseEvent){
@@ -62,8 +66,9 @@
                     }
 				}
 			}
-		}		
+		}
 	}
+
 	function fadeOut(){
 		context.fillStyle = "rgba(0,0,0, 0.2)";
 		context.fillRect (0, 0, width, height);
@@ -71,8 +76,9 @@
 		if(time >= 2){
 			clearInterval(fadeId);
 			time = 0;
-			timerId = setInterval("updateMainMenu()", 1000/frames);
+			timerId = setInterval("updateControls()", 1000/frames);
 			canvas.addEventListener("mousemove", checkPos);
 			canvas.addEventListener("mouseup", checkClick);
 		}
 	}
+}
