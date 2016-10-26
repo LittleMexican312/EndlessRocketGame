@@ -110,7 +110,7 @@ Player.prototype.update = function(deltaTime)
 
     }  
 
-    if (player.position.y >= SCREEN_HEIGHT - 21) {
+    if (player.position.y >= SCREEN_HEIGHT - 56) {
 
         player.position.y -= 2.7;
 		down = false; 
