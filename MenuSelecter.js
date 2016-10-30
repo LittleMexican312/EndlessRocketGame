@@ -14,6 +14,7 @@ var MenuSelecter = function() {
 	this.rotation = 0;
 	
 	this.cooldownTimer = 0;
+	
 	this.selected = 2;
 };
 
@@ -27,13 +28,14 @@ MenuSelecter.prototype.update = function(deltaTime)
 	var enter = false;
 	var selectedTimer = 2;
 	
+	
 //Check if Key is Down
-	if((keyboard.isKeyDown(keyboard.KEY_LEFT) == true)  || (keyboard.isKeyDown(keyboard.KEY_A) == true))
+	if((keyboard.isKeyDown(keyboard.KEY_LEFT) == true) || (keyboard.isKeyDown(keyboard.KEY_A) == true))
 	{
 		left = true;
 	}
 		
-	if((keyboard.isKeyDown(keyboard.KEY_RIGHT) == true)  || (keyboard.isKeyDown(keyboard.KEY_D) == true)) 
+	if((keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) || (keyboard.isKeyDown(keyboard.KEY_D) == true))
 	{
 		right = true;
 	}
@@ -41,7 +43,7 @@ MenuSelecter.prototype.update = function(deltaTime)
 	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true)
 	{
 		enter = true;
-		selectedTimer = 2;
+		selectedTimer += 2;
 	}
 	
 //Add MenuSelecter Speed
@@ -106,13 +108,6 @@ MenuSelecter.prototype.update = function(deltaTime)
 	context.fillText(selected3Text, SCREEN_WIDTH - 300, 20);
 		
 	}
-
-	// Selected
-	context.fillStyle = "white";
-	context.font = "16px Arial";
-	var selectedText = "Selected Button:  " + this.selected;
-	context.fillText(selectedText, SCREEN_WIDTH - 300, 20);
-	
 }
 	
 MenuSelecter.prototype.draw = function()
