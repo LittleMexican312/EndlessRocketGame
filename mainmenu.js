@@ -25,6 +25,7 @@
 	var buttonWidth = [50,50,50];
 	var buttonHeight = [50,50,50];
 
+
 	bgImage.src = "Menu Images/Background.png";
 	logoImage.src = "Menu Images/mainTitle.png";
 	playImage.onload = function(){
@@ -47,16 +48,19 @@
 	function updateMainMenu() {
 		clearMainMenu();
 		drawMainMenu();
-
-		canvas.addEventListener("mousemove", checkPos);
-		canvas.addEventListener("mouseup", checkClick);
+		
+	canvas.addEventListener("mousemove", checkPos);
+	canvas.addEventListener("mouseup", checkClick);
+	
 	}
+	
 	function clearMainMenu() {
 		context.clearRect(0, 0, width, height);
 	}
 	function drawMainMenu(){
 		context.drawImage(bgImage, 0, backgroundY);
 		context.drawImage(logoImage, 120, 210);
+		MenuSelecter.draw();
 		context.drawImage(playImage, buttonX[0], buttonY[0]);
 		context.drawImage(aboutImage, buttonX[1], buttonY[1]);
 		context.drawImage(controlsImage, buttonX[2], buttonY[2]);

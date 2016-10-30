@@ -32,9 +32,10 @@ function getDeltaTime() {
 //Game State Variables
 var STATE_MENUSCREEN = 0;
 var STATE_CONTROLS = 1;
-var STATE_GAME = 2;
-var STATE_GAMEOVER = 3;
-var STATE_UPGRADEMENU = 4;
+var STATE_ABOUT = 2;
+var STATE_GAME = 3;
+var STATE_GAMEOVER = 4;
+var STATE_UPGRADEMENU = 5;
 
 var gameState = STATE_MENUSCREEN;
 
@@ -51,6 +52,14 @@ var spawnStarOneTimer = 0;
 var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 var asteroidSpeedTimer = 1;
+
+
+var aboutBackground = document.createElement("img");
+aboutBackground.src = "About Image.png";
+
+var controlsBackground = document.createElement("img");
+controlsBackground.src = "Controls Image.png";
+
 
 //HUD
 
@@ -80,6 +89,7 @@ var menuimage = new menuimage();
 var background = new background();
 var HUD = new HUD();
 var player = new Player();
+var MenuSelecter = new MenuSelecter();
 var keyboard = new Keyboard();
 
 // Arrays
@@ -132,6 +142,9 @@ function run () {
 		case STATE_CONTROLS:
             runControls(deltaTime);
             break;
+		case STATE_ABOUT:
+			runAbout(deltaTime);
+			break;
         case STATE_GAME:
             runGame(deltaTime);			
             break;
@@ -184,11 +197,35 @@ initialize();
 
 function runMainMenu(deltaTime) {
 	updateMainMenu();
+	MenuSelecter.update();
+	MenuSelecter.draw();
 }
+
+var ESCAPE = false;
 
 function runControls(deltaTime) {
 	
+	// Controls Image
+		context.drawImage(controlsBackground, 0, 0);
+		
+	if(keyboard.isKeyDown(keyboard.KEY_ESCAPE) == true)
+	{
+		ESCAPE = true;
+		gameState = STATE_MENUSCREEN;
+	}
+	
+}
 
+function runAbout(deltaTime) {
+		
+	// About Image
+	context.drawImage(aboutBackground, 0, 0);
+		
+	if(keyboard.isKeyDown(keyboard.KEY_ESCAPE) == true)
+	{
+		ESCAPE = true;
+		gameState = STATE_MENUSCREEN;
+	}	
 	
 }
 
