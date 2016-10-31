@@ -1,4 +1,4 @@
-var MenuSelecter = function() {
+var GameOverSelecter = function() {
 	this.image = document.createElement("img");
 	
 	this.position = new Vector2();
@@ -15,13 +15,13 @@ var MenuSelecter = function() {
 	
 	this.cooldownTimer = 0;
 	
-	this.selected = 2;
+	this.selected = 1;
 };
 
 var positionX = 200;
 var positionY = 200;
 
-MenuSelecter.prototype.update = function(deltaTime)
+GameOverSelecter.prototype.update = function(deltaTime)
 {
 	var left = false;
 	var right = false;
@@ -36,7 +36,7 @@ MenuSelecter.prototype.update = function(deltaTime)
 		left = true;
 		this.cooldownTimer = 0.2;
 	}
-		
+	
 	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true && this.cooldownTimer <= 0)
 	{
 		right = true;
@@ -52,9 +52,9 @@ MenuSelecter.prototype.update = function(deltaTime)
 	if (left == true) {
 		this.selected += 1;
 		
-		if (this.selected > 3)
+		if (this.selected > 2)
 		{
-			this.selected = 3;
+			this.selected = 2;
 		}
 	}
 	
@@ -71,60 +71,43 @@ MenuSelecter.prototype.update = function(deltaTime)
 	}
 
 	// If Enter is pressed Go to (This State)
-	if (this.selected == 2 && enter == true) {
+	if (this.selected == 1 && enter == true) {
 			gameState = STATE_GAME;		
 	}
-	
-	if (this.selected == 3 && enter == true) {
-		gameState = STATE_CONTROLS;		
-	}
-	
-	if (this.selected == 1 && enter == true) {
-		gameState = STATE_ABOUT;		
+
+	if (this.selected == 2 && enter == true) {
+		gameState = STATE_MENUSCREEN;		
 	}
 	
 	// If this state is selected Show State Name
 	if (this.selected == 1) {
 		
-		this.position.x = 380;
-		this.position.y = 410;
+		this.position.x = 320;
+		this.position.y = 370;
 		
 		// Selected
 	context.fillStyle = "white";
 	context.font = "16px Arial";
-	var selected1Text = "Selected Button: About ";
+	var selected1Text = "Selected Button: Play ";
 	context.fillText(selected1Text, SCREEN_WIDTH - 300, 20);
 		
 	}
 
 	if (this.selected == 2) {
 		
-		this.position.x = 275;
-		this.position.y = 410;
+		this.position.x = 235;
+		this.position.y = 370;
 		
 		// Selected
 	context.fillStyle = "white";
 	context.font = "16px Arial";
-	var selected2Text = "Selected Button: Play ";
+	var selected2Text = "Selected Button: Menu ";
 	context.fillText(selected2Text, SCREEN_WIDTH - 300, 20);
-		
-	}
-
-	if (this.selected == 3) {
-		
-		this.position.x = 168;
-		this.position.y = 410;
-		
-		// Selected
-	context.fillStyle = "white";
-	context.font = "16px Arial";
-	var selected3Text = "Selected Button: Controls ";
-	context.fillText(selected3Text, SCREEN_WIDTH - 300, 20);
 		
 	}
 }
 	
-MenuSelecter.prototype.draw = function()
+GameOverSelecter.prototype.draw = function()
 {
 	context.save();
 	context.translate(this.position.x, this.position.y);

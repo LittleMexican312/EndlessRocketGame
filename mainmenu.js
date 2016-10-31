@@ -60,7 +60,7 @@
 	function drawMainMenu(){
 		context.drawImage(bgImage, 0, backgroundY);
 		context.drawImage(logoImage, 120, 210);
-		MenuSelecter.draw();
+		menuselecter.draw();
 		context.drawImage(playImage, buttonX[0], buttonY[0]);
 		context.drawImage(aboutImage, buttonX[1], buttonY[1]);
 		context.drawImage(controlsImage, buttonX[2], buttonY[2]);

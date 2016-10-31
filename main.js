@@ -37,7 +37,7 @@ var STATE_GAME = 3;
 var STATE_GAMEOVER = 4;
 var STATE_UPGRADEMENU = 5;
 
-var gameState = STATE_MENUSCREEN;
+var gameState = STATE_GAMEOVER;
 
 //Timers
 //State Timers
@@ -89,7 +89,8 @@ var menuimage = new menuimage();
 var background = new background();
 var HUD = new HUD();
 var player = new Player();
-var MenuSelecter = new MenuSelecter();
+var menuselecter = new MenuSelecter();
+var gameoverselecter = new GameOverSelecter();
 var keyboard = new Keyboard();
 
 // Arrays
@@ -197,8 +198,8 @@ initialize();
 
 function runMainMenu(deltaTime) {
 	updateMainMenu();
-	MenuSelecter.update();
-	MenuSelecter.draw();
+	menuselecter.update(deltaTime);
+	menuselecter.draw();
 }
 
 var ESCAPE = false;
@@ -460,6 +461,9 @@ function runGame(deltaTime) {
 }
 function runGameOver(deltaTime) {
 	updateGameOver();
+
+	gameoverselecter.update(deltaTime);
+	gameoverselecter.draw();
 
 	context.fillStyle = "white";
 	context.font="21px Arial";
