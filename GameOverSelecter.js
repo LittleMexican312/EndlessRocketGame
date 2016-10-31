@@ -21,6 +21,7 @@ var GameOverSelecter = function() {
 var positionX = 200;
 var positionY = 200;
 
+
 GameOverSelecter.prototype.update = function(deltaTime)
 {
 	var left = false;

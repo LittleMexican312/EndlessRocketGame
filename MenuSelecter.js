@@ -40,13 +40,13 @@ MenuSelecter.prototype.update = function(deltaTime)
 		this.cooldownTimer = 0.2;
 	}
 		
-	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true && this.previousKeys[keyboard.KEY_LEFT] == false)
+	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true && this.previousKeys[keyboard.KEY_RIGHT] == false)
 	{
 		right = true;
 		this.cooldownTimer = 0.2;
 	}
 
-	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true && this.previousKeys[keyboard.KEY_LEFT] == false)
+	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true && this.previousKeys[keyboard.KEY_ENTER] == false)
 	{
 		enter = true;
 	}

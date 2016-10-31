@@ -37,7 +37,7 @@ var STATE_GAME = 3;
 var STATE_GAMEOVER = 4;
 var STATE_UPGRADEMENU = 5;
 
-var gameState = STATE_GAMEOVER;
+var gameState = STATE_MENUSCREEN;
 
 //Timers
 //State Timers
