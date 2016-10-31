@@ -43,7 +43,6 @@ MenuSelecter.prototype.update = function(deltaTime)
 	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true)
 	{
 		enter = true;
-		selectedTimer += 2;
 	}
 	
 //Add MenuSelecter Speed
