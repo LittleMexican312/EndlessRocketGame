@@ -53,6 +53,7 @@ var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 var asteroidSpeedTimer = 1;
 
+var ispaused = false;
 
 var aboutBackground = document.createElement("img");
 aboutBackground.src = "About Image.png";
@@ -89,9 +90,9 @@ var menuimage = new menuimage();
 var background = new background();
 var HUD = new HUD();
 var player = new Player();
+var keyboard = new Keyboard();
 var menuselecter = new MenuSelecter();
 var gameoverselecter = new GameOverSelecter();
-var keyboard = new Keyboard();
 
 // Arrays
 //Create Bullet
@@ -238,7 +239,9 @@ function runGame(deltaTime) {
     player.update(deltaTime);
 	gameTimer += deltaTime;
 	asteroidSpeedTimer += deltaTime;
-
+	
+	
+	
 	//Asteroid Speed Changer
 	for (var i=1; i < asteroidSpeedTimer; i++)
 	{

@@ -15,6 +15,9 @@ var MenuSelecter = function() {
 	
 	this.cooldownTimer = 0;
 	
+	this.previousKeys = keyboard.keys.slice();
+
+	
 	this.selected = 2;
 };
 
@@ -31,19 +34,19 @@ MenuSelecter.prototype.update = function(deltaTime)
 	this.cooldownTimer -= deltaTime;
 	
 //Check if Key is Down
-	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true && this.cooldownTimer <= 0)
+	if(keyboard.isKeyDown(keyboard.KEY_LEFT) == true && this.previousKeys[keyboard.KEY_LEFT] == false)
 	{
 		left = true;
 		this.cooldownTimer = 0.2;
 	}
 		
-	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true && this.cooldownTimer <= 0)
+	if(keyboard.isKeyDown(keyboard.KEY_RIGHT) == true && this.previousKeys[keyboard.KEY_LEFT] == false)
 	{
 		right = true;
 		this.cooldownTimer = 0.2;
 	}
 
-	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true)
+	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true && this.previousKeys[keyboard.KEY_LEFT] == false)
 	{
 		enter = true;
 	}
@@ -122,6 +125,9 @@ MenuSelecter.prototype.update = function(deltaTime)
 	context.fillText(selected3Text, SCREEN_WIDTH - 300, 20);
 		
 	}
+	
+	this.previousKeys = keyboard.keys.slice();
+	
 }
 	
 MenuSelecter.prototype.draw = function()

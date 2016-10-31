@@ -43,9 +43,10 @@ GameOverSelecter.prototype.update = function(deltaTime)
 		this.cooldownTimer = 0.2;
 	}
 
-	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true)
+	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true && this.cooldownTimer <= 0)
 	{
 		enter = true;
+		this.cooldownTimer = 0.2;
 	}
 	
 //Add MenuSelecter Speed
