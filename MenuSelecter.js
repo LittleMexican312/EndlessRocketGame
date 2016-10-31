@@ -28,19 +28,22 @@ MenuSelecter.prototype.update = function(deltaTime)
 	var enter = false;
 	var selectedTimer = 2;
 	
+	this.cooldownTimer -= deltaTime;
 	
 //Check if Key is Down
-	if((keyboard.isKeyDown(keyboard.KEY_LEFT) == true) || (keyboard.isKeyDown(keyboard.KEY_A) == true))
+	if((keyboard.onKeyDown(keyboard.KEY_LEFT) == true) || (keyboard.onKeyDown(keyboard.KEY_A) == true))
 	{
 		left = true;
+		this.cooldownTimer = 1;
 	}
 		
-	if((keyboard.isKeyDown(keyboard.KEY_RIGHT) == true) || (keyboard.isKeyDown(keyboard.KEY_D) == true))
+	if(keyboard.onKeyDown(keyboard.KEY_RIGHT) == true && this.cooldownTimer <= 0)
 	{
 		right = true;
+		this.cooldownTimer = 1;
 	}
 
-	if(keyboard.isKeyDown(keyboard.KEY_ENTER) == true)
+	if(keyboard.onKeyDown(keyboard.KEY_ENTER) == true)
 	{
 		enter = true;
 	}
