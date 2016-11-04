@@ -53,7 +53,7 @@ var spawnStarTwoTimer = 0;
 var shootTimer = 0;
 var asteroidSpeedTimer = 1;
 
-var ispaused = false;
+var paused = false;
 
 var aboutBackground = document.createElement("img");
 aboutBackground.src = "About Image.png";
@@ -458,9 +458,6 @@ function runGame(deltaTime) {
 	{
 		context.drawImage(livesImage, 195 + ((livesImage.width+2)*i), 608);
 	}
-
-	
-
 }
 function runGameOver(deltaTime) {
 	updateGameOver();
