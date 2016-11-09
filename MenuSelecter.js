@@ -75,7 +75,8 @@ MenuSelecter.prototype.update = function(deltaTime)
 
 	// If Enter is pressed Go to (This State)
 	if (this.selected == 2 && enter == true) {
-			gameState = STATE_GAME;		
+			gameState = STATE_GAME;
+			lives = 3;	
 	}
 	
 	if (this.selected == 3 && enter == true) {

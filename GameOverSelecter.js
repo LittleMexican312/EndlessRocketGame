@@ -74,7 +74,8 @@ GameOverSelecter.prototype.update = function(deltaTime)
 
 	// If Enter is pressed Go to (This State)
 	if (this.selected == 1 && enter == true) {
-			gameState = STATE_GAME;		
+			gameState = STATE_GAME;
+			lives = 3;	
 	}
 
 	if (this.selected == 2 && enter == true) {
